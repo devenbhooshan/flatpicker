@@ -25,6 +25,7 @@ class Picker:
 		self.bhk=[]
 		self.pic=[]
 		self.location=[]
+		self.furnished=[]
 	def housing(self):
 		pass
 	def commonfloor(self,city,locations,company):
@@ -45,6 +46,9 @@ class Picker:
 			
 		valid_locations=[]
 		for location in locations:
+
+			if len(location)<=5:
+				continue
 			l=location.split(" ")
 			aaa=["1","2","3","4","5","6","7","8","9","0"]
 			present=False
@@ -87,11 +91,29 @@ class Picker:
 			try:
 				title=self.driver.find_element_by_xpath(commonfloor_title_xpath).text
 				price=self.driver.find_element_by_xpath(commonfloor_price_xpath).text
+
 				address=self.driver.find_element_by_xpath(commonfloor_address_xpath).text
+				address=", ".join(address.split(","))
 				avail=self.driver.find_element_by_xpath(commonfloor_avail_xpath).text
 				area=self.driver.find_element_by_xpath(commonfloor_area_xpath).text
 				bhk=self.driver.find_element_by_xpath(commonfloor_bhk_xpath).text
 				location=self.driver.find_element_by_xpath(commonfloor_location_xpath).text
+
+				counter=1
+				while counter<=11:
+					try:
+						furnished=self.driver.find_element_by_xpath(commonfloor_furnished_xpath.format(flag=counter)).text
+						if "furnished" in str(furnished).lower():
+							break
+					except:
+						pass
+					counter+=1	
+				
+				
+
+				print "Crawling link : " + link
+				
+					
 				pic=''
 				try:
 					pic=self.driver.find_element_by_xpath(commonfloor_pic_xpath).get_attribute('src')
@@ -101,7 +123,7 @@ class Picker:
 				print "link : "+ link +" Not crawled" + str(e)
 				continue
 			
-			self.add_flat(link,pic,title,price,address,avail,area,bhk,location,company,city)
+			self.add_flat(link,pic,title,price,address,avail,area,bhk,location,company,city,furnished)
 
 			self.pic.append(pic)	
 			self.title.append(title)
@@ -113,17 +135,17 @@ class Picker:
 		self.close()
 		return valid_locations
 	
-	def add_flat(self,link,pic,title,price,address,avail,area,bhk,location,company,city):
+	def add_flat(self,link,pic,title,price,address,avail,area,bhk,location,company,city,furnished):
 		bhk=float(str(bhk).lower().strip("bhk").strip())
 		bhk,created=BHK.objects.get_or_create(bhk=bhk)
 		location=Location.objects.get_or_create(name=location)[0]
 		print str(bhk)
 		print str(location)
 		try:
-			Flat.objects.create(title=title,url=link,pic_url=pic,price=price,address=address,bhk=bhk,area=area,location=location)
+			Flat.objects.create(title=title,url=link,pic_url=pic,price=price,address=address,bhk=bhk,area=area,location=location,furnished=furnished)
 		except:
 			Flat.objects.get(url=link).delete()
-			Flat.objects.create(title=title,url=link,pic_url=pic,price=price,address=address,bhk=bhk,area=area,location=location)
+			Flat.objects.create(title=title,url=link,pic_url=pic,price=price,address=address,bhk=bhk,area=area,location=location,furnished=furnished)
 
 		LocationCompanyCity.objects.get_or_create(location=location,city=city,company=company)	
 			

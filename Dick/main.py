@@ -10,10 +10,10 @@ from Core.models import *
 
 m=Maps(url)
 
-companies=Company.objects.all().exclude(name__in=['Google','Amazon'])
+companies=Company.objects.all().exclude(name__in=['Amazon','Microsoft','Adobe','Misys','Samsung','Musigma'])
 for company in companies:
 	try:
-
+		print "Starting crawler for " + company.name
 		location=m.find_locations(latlong[company.name]['Bangalore'][0],latlong[company.name]['Bangalore'][1],['bangalore','bangaluru'])
 		p=Picker()
 		# location =[u'old madras road', u'bennigana halli', u'kasturi nagar', u'cv raman nagar', u'jal vayu towers']

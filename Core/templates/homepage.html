@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{%block container %}
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron text-center">
+        <h3>
+          <span class="glyphicon glyphicon-map-marker"></span> Flatpicker - Find flats nearest to your company/office. (Currently available for Bangalore only)
+        </h3>
+      </div> 
+    <div>
+  </div>
+
+  <div class="row"> 
+      <div class="col-md-12">      
+        <div class="text-center">
+          <h2>Select Company</h2>
+          <Br>
+        </div>
+      </div>
+    
+         
+        <div class="col-md-3">
+          <a href='flats/Bangalore/Adobe'><img src="{% static "images/adobe.jpg" %}" data="adobe"></a>
+        </div>
+
+        <div class="col-md-3">
+          <a href='flats/Bangalore/Amazon'><img src="{% static "images/amazon.png" %}" data="amazon"></a>
+        </div>
+        <div class="col-md-3">
+          <a href='flats/Bangalore/Commonfloor'><img src="{% static "images/commonfloor.jpg" %}" data="commonfloor"></a>
+        </div>
+        <div class="col-md-3">
+          <a href='flats/Bangalore/Google'><img src="{% static "images/google.jpg" %}" data="google" ></a>
+        </div>
+
+        
+        
+
+        
+       
+  </div> 
+  <br>     
+  <div class="row">
+        <div class="col-md-3">
+          <a href='flats/Bangalore/Microsoft'><img src="{% static "images/microsoft.png" %}" data="microsoft" ></a>
+        </div>
+
+        <div class="col-md-3">
+          <a href='flats/Bangalore/Misys'><img src="{% static "images/misys.jpg" %}" data="misys" ></a>
+        </div>     
+        <div class="col-md-3">
+          <a href='flats/Bangalore/Musigma'><img src="{% static "images/musigma.jpg" %}"></a>
+        </div>
+        <div class="col-md-3">
+          <a href='flats/Bangalore/Samsung'><img src="{% static "images/samsung.jpg" %}" data="samsung" ></a>
+        </div>
+  </div>
+  <!-- <br>     
+  <div class="row">           
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+        </div>
+
+        <div class="col-md-4 text-center">      
+        <button type="button" class="btn btn-primary btn-lg">Find flats for me!</button>
+        </div>
+  </div>
+  <br>     
+   -->     
+{% endblock %}

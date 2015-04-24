@@ -12,6 +12,7 @@ commonfloor_address_xpath="//span[@class='details-item-value address']"
 # commonfloor_posted_xpath="//div[@class='snpt-rght-cont ']/div[@class='pull-left']/p[@class='snpt-pstd-by']"
 commonfloor_links_xpath="//div[@class='pull-left']/a"
 commonfloor_pic_xpath="//a/div[@class='img-wrap']/img"
+commonfloor_furnished_xpath="//div[@class='col-md-6 col-md-offset-0 col-sm-5 col-sm-offset-1 col-xs-5 col-xs-offset-1 pd-left-0'][{flag}]/span[@class='details-item-value']"
 # commonfloor_title_xpath=commonfloor_title_xpath[0]
 # commonfloor_price_xpath=commonfloor_price_xpath[0]
 # commonfloor_location_xpath=commonfloor_location_xpath[0]

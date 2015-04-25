@@ -21,6 +21,11 @@ class Location(models.Model):
 	def __str__(self):
 		return self.name
 
+class Area(models.Model):
+	name=models.CharField(unique=True,null=False,max_length=50)
+	def __str__(self):
+		return self.name	
+
 class Flat(models.Model):
 	url=models.URLField(unique=True,null=False)
 	title=models.CharField(max_length=100)
@@ -28,16 +33,19 @@ class Flat(models.Model):
 	bhk=models.ForeignKey(BHK)
 	address=models.CharField(max_length=300)
 	location=models.ForeignKey(Location)
-	area=models.CharField(max_length=20)
+	size=models.CharField(max_length=20)
 	pic_url=models.URLField()
 	furnished=models.CharField(max_length=50)
 	def __str__(self):
 		return str(self.url)
 
+
 class LocationCompanyCity(models.Model):
 	location=models.ForeignKey(Location)
 	company=models.ForeignKey(Company)
 	city=models.ForeignKey(City)
+	area=models.ForeignKey(Area,default=1)
+
 	def __str__(self):
 		return str(self.location) + ' : ' + str(self.company) 
 	class Meta:

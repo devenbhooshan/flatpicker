@@ -7,4 +7,5 @@ admin.site.register(Company)
 admin.site.register(Flat)
 admin.site.register(Location)
 admin.site.register(LocationCompanyCity)
+admin.site.register(Area)
 # Register your models here.

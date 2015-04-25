@@ -1,0 +1,164 @@
+{% load staticfiles %}
+{% load tags %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A layout example that shows off a responsive product landing page.">
+    
+    {% block title %}
+    <title>Find flats nearest to your office | Flatpicker </title>
+    {% endblock %}
+    
+<link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+
+<!-- <link href="{% static "css/theme.css" %}" rel="stylesheet"> -->
+
+
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+
+
+
+<!--[if lte IE 8]>
+  
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+  
+<![endif]-->
+<!--[if gt IE 8]><!-->
+  
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+  
+<!--<![endif]-->
+
+
+
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
+<link href="{% static "css/marketing.css" %}" rel="stylesheet">
+
+  
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="/combo/1.18.13?/css/layouts/marketing-old-ie.css">
+    <![endif]-->
+    
+  
+
+
+    
+<!--[if lt IE 9]>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+<![endif]-->
+g" style="z-index:4">
+
+
+
+
+</head>
+<body>
+
+
+
+
+
+
+<!-- <div class="header">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+        <a class="pure-menu-heading" href="/">Flatpicker</a>
+
+        
+    </div>
+</div> -->
+
+<div class="splash-container">
+{% block content %}   
+    <div class="splash upper">
+             
+        <h1 class="splash-head">
+            <span class="glyphicon glyphicon-map-marker"></span> Flatpicker </h1>
+        <p class="splash-subhead">
+            Find flats nearest to your company/office. <!-- (Currently available for Bangalore only) -->
+        </p>
+        <!-- <p>
+            <a href="/flats/" class="pure-button pure-button-primary">Get Started</a>
+        </p> -->
+        
+        <form method="post" action="/flats/">
+          {% csrf_token %} 
+        <div class="pure-g pure-form">
+            <div class="pure-u-1-4">
+                <div class="dropdown">
+                   
+                    <select  name="company" class="form-control drop">
+                      <option>Company</option>
+                      <option>Google</option>
+                    </select>
+                    
+                </div>
+            </div>    
+            <div class="pure-u-1-4">
+               <div class="dropdown">
+                    
+                    <select  name="city" class="form-control drop">
+                      <option>City</option>
+                      <option>Bangalore</option>
+                    </select>
+                </div>
+            </div>
+            <div class="pure-u-1-4">
+               <div class="dropdown">
+
+                    <select name="area" class="form-control drop"  >
+                      <option>Area</option>
+                      <option>All</option>
+                                
+                    </select>
+                   <!--  <button class="btn btn-default dropdown-toggle drop" type="button" id="menu1" data-toggle="dropdown">Area
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+                      <li role="presentation" class="divider"></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
+                    </ul>  -->  
+                </div>
+            </div>
+
+            <div class="pure-u-1-4" >
+
+                <input  class="btn btn-default  drop" type="submit"  style="text-align:center">
+                  
+                
+            </div>    
+             </div>
+          </form>
+       
+
+    </div>
+    {% endblock %}
+</div>
+
+<!-- 
+<div class="content-wrapper">
+    
+
+    <div class="footer l-box is-center">
+        View the source of this layout to learn more. Made with love by the YUI Team.
+    </div>
+
+</div>
+ -->
+
+<script src="{% static "js/jquery-1.11.2.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.js" %}"></script>
+<script>
+</script>
+
+
+
+
+
+
+</body>
+</html>

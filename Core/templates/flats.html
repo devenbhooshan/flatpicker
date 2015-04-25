@@ -12,7 +12,7 @@
 {% for f in flats %}
 <div class="col-sm-5 col-md-6">
 	<div class="panel panel-default">
-	  <div class="panel-heading"><h4>{{f.title}} </h4> <p >{{f.location}}</p></div>
+	  <div class="panel-heading"><h4>{{f.title}} </h4> <p ><span class="glyphicon glyphicon-map-marker"></span> Approx. {{ for_dist|find_distance:f.location}} from {{for_dist|last}}</p></div>
 	  <div class="panel-body">
 	  	<div class="row">
 		  	<div class="col-sm-12 col-md-4">
@@ -21,7 +21,8 @@
 			<div class="col-sm-5 col-md-2">
 		  		
 		  		<h5>{{f.price}}</h5>	
-
+		  		<!-- {{ for_dist|find_distance:f.location}} -->
+		  		
 		  		<h5>{{f.size}} Sq. Ft.</h5>
 		  	</div>	
 

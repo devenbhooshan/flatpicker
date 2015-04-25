@@ -91,7 +91,9 @@ g" style="z-index:4">
                    
                     <select  name="company" class="form-control drop">
                       <option>Company</option>
-                      <option>Google</option>
+                      {% for company in companies %}
+                      <option>{{company|first}}</option>
+                      {% endfor %}
                     </select>
                     
                 </div>

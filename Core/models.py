@@ -38,6 +38,7 @@ class Flat(models.Model):
 	size=models.CharField(max_length=20)
 	pic_url=models.URLField()
 	furnished=models.CharField(max_length=50)
+	approved=models.BooleanField(default=False)
 	def __str__(self):
 		return str(self.url)
 
@@ -47,6 +48,7 @@ class LocationCompanyCity(models.Model):
 	company=models.ForeignKey(Company)
 	city=models.ForeignKey(City)
 	area=models.ForeignKey(Area,default=1)
+	distance=models.CharField(max_length=10)
 
 	def __str__(self):
 		return str(self.location) + ' : ' + str(self.company) 

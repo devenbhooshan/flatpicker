@@ -8,21 +8,29 @@ os.environ['DJANGO_SETTINGS_MODULE'] ='flatpicker.settings'
 from Core.models import *
 
 
-m=Maps(url)
+m=Maps(url,dis_url)
 
-companies=Company.objects.all().exclude(name__in=['Amazon','Microsoft','Adobe','Misys','Samsung','Musigma'])
+rectricted_terms={}
+rectricted_terms['Bangalore']=['bangalore','bangaluru']
+
+companies=Company.objects.filter(name='TCS')
 for company in companies:
 	try:
+		
+		latlong=LatLong.objects.filter(company=company)
 		print("Starting crawler for " + company.name)
-		location=m.find_locations(latlong[company.name]['Bangalore'][0],latlong[company.name]['Bangalore'][1],['bangalore','bangaluru'])
-		p=Picker()
-		# location =[u'old madras road', u'bennigana halli', u'kasturi nagar', u'cv raman nagar', u'jal vayu towers']
-		# location=location[0:1]
-		city,created=City.objects.get_or_create(name='Bangalore')
-		# company,created=Company.objects.get_or_create(name='Google')
-		valid_locations=p.commonfloor(city,location,company)
+		for ll in latlong:
+			print("Area :  " + ll.area.name)
+			location=m.find_locations(ll.lat,ll.lon,rectricted_terms[ll.city.name])
+			
+			p=Picker()
+			# location=location[0:2]
+			# print(location)
+			# location=['whitefield']
+			valid_locations=p.commonfloor(ll.city,location,company,ll.area)
+
 	except Exception as e:	
-		print ("Error: Could not crawl " + company.name + " . Reason : " + str(e))
+		print ("Error: Could not crawl " + company.name + " . Reason : " + traceback.format_exc())
 	# if valid_locations:
 
 	# 	print valid_locations

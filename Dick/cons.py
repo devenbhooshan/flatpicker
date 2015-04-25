@@ -16,7 +16,6 @@ commonfloor_furnished_xpath="//div[@class='col-md-6 col-md-offset-0 col-sm-5 col
 commonfloor_input_xpath="//*[@id='top-search-box']/div/div[1]/input"
 commonfloor_inputfound_xpath="//div[@class='optgroup'][1]/div[@class='active']/span[@class='title']/span[@class='name']"
 commonfloor_h1_xpath="//div[@id='searchHeaderWidget']/h1"
-
 dis_url="https://maps.googleapis.com/maps/api/distancematrix/json?origins={origin}&destinations={destination}8&sensor=false&key=AIzaSyDgMZk-bRxgniNznJ8b3lRV6IGTtB_CVYg"
 
 # commonfloor_title_xpath=commonfloor_title_xpath[0]

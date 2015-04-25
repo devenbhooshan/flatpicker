@@ -2,13 +2,9 @@ from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse,HttpResponseRedirect
 from Core.models import *
 import json
-from constants import GLOBALS
+from Core.constants import GLOBALS
 
-class JsonResponse(HttpResponse):
-	def __init__(self, content={}, mimetype=None, status=None,
-			 content_type='application/json'):
-		super(JsonResponse, self).__init__(json.dumps(content), mimetype=mimetype,
-										   status=status, content_type=content_type)
+
 
 def generate_seo_tags(**kwargs):
 	description=kwargs['description']
@@ -67,6 +63,35 @@ def get_flats(request,company,city,area):
 	total=len(flats)
 	return render(request,'flats.html',{'flats':flats ,'title':title,'h1':h1,'total':total})
 
+def city_area(request,company):
+	company=get_object_or_404(Company,name=company)
+	locations=LocationCompanyCity.objects.filter(company=company)
+	area=[]
+	city=[]
+	for l in locations:
+		if l.city.name not in city:
+			city.append(l.city.name)
+		if l.area.name not in area:
+			area.append(l.area.name)
+	data={'area':area,'city':city}
+	return HttpResponse(json.dumps(data), content_type='application/json')		
+
+
+def area(request,company,city):
+	company=get_object_or_404(Company,name=company)
+	city=get_object_or_404(City,name=city)
+
+	locations=LocationCompanyCity.objects.filter(company=company,city=city)
+	
+	area=[]
+	
+	for l in locations:
+		if l.area.name not in area:
+			area.append(l.area.name)
+	data={'area':area}
+	return HttpResponse(json.dumps(data), content_type='application/json')		
+	
+			
 def flats(request):
 	url="/flats/{company}/{city}/{area}/"
 

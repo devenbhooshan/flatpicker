@@ -7,6 +7,8 @@ urlpatterns = patterns('',
     
     # url(r'^flats/(\w+)/(\w+)/$', 'Core.views.flats', name='flats'),
     
+    url(r'^city_area/(\w+)/$', 'Core.views.city_area', name='city_area'),
+    url(r'^area/(\w+)/(\w+)$', 'Core.views.area', name='area'),
     url(r'^flats/(\w+)/(\w+)/(\w+)/$', 'Core.views.get_flats', name='get_flats'),
     url(r'^flats/', 'Core.views.flats', name='flats'),
     # url(r'^flats/', 'Core.views.filter', name='filter'),

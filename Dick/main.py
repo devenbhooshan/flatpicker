@@ -13,7 +13,7 @@ m=Maps(url)
 companies=Company.objects.all().exclude(name__in=['Amazon','Microsoft','Adobe','Misys','Samsung','Musigma'])
 for company in companies:
 	try:
-		print "Starting crawler for " + company.name
+		print("Starting crawler for " + company.name)
 		location=m.find_locations(latlong[company.name]['Bangalore'][0],latlong[company.name]['Bangalore'][1],['bangalore','bangaluru'])
 		p=Picker()
 		# location =[u'old madras road', u'bennigana halli', u'kasturi nagar', u'cv raman nagar', u'jal vayu towers']
@@ -22,7 +22,7 @@ for company in companies:
 		# company,created=Company.objects.get_or_create(name='Google')
 		valid_locations=p.commonfloor(city,location,company)
 	except Exception as e:	
-		print "Error: Could not crawl " + company.name + " . Reason : " + str(e)
+		print ("Error: Could not crawl " + company.name + " . Reason : " + str(e))
 	# if valid_locations:
 
 	# 	print valid_locations

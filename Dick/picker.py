@@ -6,6 +6,8 @@ import os,sys
 PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(PROJECT_PATH)
 os.environ['DJANGO_SETTINGS_MODULE'] ='flatpicker.settings'
+import django
+django.setup()
 from Core.models import *
 
 class Picker:
@@ -40,7 +42,7 @@ class Picker:
 		try:
 			self.driver.find_element_by_xpath("//div[@class='selectize-input items not-full has-options']").click()
 		except:
-			print "Error: Location Input Field not found"
+			print("Error: Location Input Field not found")
 			self.close()
 			return False
 			
@@ -83,7 +85,7 @@ class Picker:
 		time.sleep(5)
 		self.driver.find_element_by_xpath("//div[@id='searchHeaderWidget']/h1").click()
 		self.links=[i.get_attribute('href') for i in self.driver.find_elements_by_xpath(commonfloor_links_xpath) if "listing" in i.get_attribute('href') ]
-		print len(self.links)
+		print(len(self.links))
 		# self.links=self.links[0:3]
 		for link in self.links:
 			self.driver.get(link)
@@ -111,7 +113,7 @@ class Picker:
 				
 				
 
-				print "Crawling link : " + link
+				print("Crawling link : " + link)
 				
 					
 				pic=''
@@ -120,7 +122,7 @@ class Picker:
 				except:
 					pic=self.driver.find_element_by_xpath("//img[@class='default-image']").get_attribute('src')
 			except Exception as e:
-				print "link : "+ link +" Not crawled" + str(e)
+				print("link : "+ link +" Not crawled" + str(e))
 				continue
 			
 			self.add_flat(link,pic,title,price,address,avail,area,bhk,location,company,city,furnished)
@@ -139,8 +141,8 @@ class Picker:
 		bhk=float(str(bhk).lower().strip("bhk").strip())
 		bhk,created=BHK.objects.get_or_create(bhk=bhk)
 		location=Location.objects.get_or_create(name=location)[0]
-		print str(bhk)
-		print str(location)
+		print(str(bhk))
+		print(str(location))
 		try:
 			Flat.objects.create(title=title,url=link,pic_url=pic,price=price,address=address,bhk=bhk,area=area,location=location,furnished=furnished)
 		except:

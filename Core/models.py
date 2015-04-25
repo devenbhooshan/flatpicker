@@ -11,6 +11,8 @@ class Company(models.Model):
 	def __str__(self):
 		return self.name
 
+
+
 class City(models.Model):
 	name=models.CharField(unique=True,null=False,max_length=50)
 	def __str__(self):
@@ -51,5 +53,13 @@ class LocationCompanyCity(models.Model):
 	class Meta:
 		unique_together=['location','company','city']
 
+class LatLong(models.Model):
+	lat=models.CharField(max_length=20)
+	lon=models.CharField(max_length=20)
+	company=models.ForeignKey(Company)
+	city=models.ForeignKey(City)
+	area=models.ForeignKey(Area)
+	def __str__(self):
+		return str(self.company) + ' : ' + str(self.city) + ' : ' + str(self.area) 
 
 

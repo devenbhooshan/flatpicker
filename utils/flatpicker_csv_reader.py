@@ -1,5 +1,5 @@
 import glob, os, csv
-import constants
+import utils.constants
 
 FOLDER_PATH = "/Users/shashank/Dropbox/flatpicker/"
 
@@ -18,4 +18,4 @@ def get_company_details():
 	return companies, latlong
 
 if __name__ == '__main__':
-	print get_company_details()
+	print(get_company_details())

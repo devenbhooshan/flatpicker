@@ -16,7 +16,7 @@ rectricted_terms={}
 rectricted_terms['Bangalore']=['bangalore','bengaluru']
 
 companies, latlong= get_company_details()
-
+print(latlong)
 
 for ll in latlong:
 	company = ll[constants.KEY_COMPANY_NAME]

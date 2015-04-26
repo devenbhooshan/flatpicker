@@ -20,12 +20,13 @@ print(latlong)
 
 for ll in latlong:
 	company = ll[constants.KEY_COMPANY_NAME]
+	print("Crawler started for : "+company)
 	try:
 		print("Area :  " + ll[constants.KEY_LOCALITY])
 		location=m.find_locations(ll[constants.KEY_LATITUDE],
 			ll[constants.KEY_LONGITUDE],
 			rectricted_terms[ll[constants.KEY_CITY]])
-		
+		print("All Locations:" + str(location) +  " : " +str(len(location)))
 		p=Picker()
 		valid_locations=p.commonfloor(ll[constants.KEY_CITY],
 			location,

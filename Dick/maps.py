@@ -14,7 +14,7 @@ class Maps:
 		latlong=[]
 		for location in locations:	
 			pl=location['vicinity'].split(",")[:-1]
-			# print(location)
+			print(location)
 			
 			origin =str(location['geometry']['location']["lat"]) + "," + str(location['geometry']['location']["lng"])
 			destination =lat + "," + long

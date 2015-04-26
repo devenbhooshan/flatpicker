@@ -14,7 +14,7 @@ from Core.models import *
 class Picker:
 	
 	def __init__(self):
-		self.display = Display(visible=1, size=(1366, 768))
+		self.display = Display(visible=0, size=(1366, 768))
 		self.display.start()
 		self.driver = webdriver.Chrome()
 		self.urls=urls
@@ -103,7 +103,7 @@ class Picker:
 			self.bhk.append(bhk)
 
 	def commonfloor(self,city,locations,company,area):
-		self.driver.get(urls['Commonfloor'][city.name])
+		self.driver.get(urls['Commonfloor'][city])
 		
 		# driver.find_element_by_xpath("//div[@class='pstd-by-wrp filter-chkbox-block']/label[@class='-lbl'][2]").click()
 		import time
@@ -145,9 +145,10 @@ class Picker:
 				
 		# self.driver.find_element_by_xpath("//div[@id='searchHeaderWidget']/h1").click()
 
-		
+		print("@valid locations")
 		for v_l in valid_locations:
-			self.driver.get(urls['Commonfloor'][city.name])
+			print(v_l)
+			self.driver.get(urls['Commonfloor'][city])
 			self.crawl(v_l,company,area,city)
 		
 		self.close()

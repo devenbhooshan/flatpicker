@@ -1,7 +1,7 @@
 import glob, os, csv
-import utils.constants
+from utils.constants import *
 
-FOLDER_PATH = "/Users/shashank/Dropbox/flatpicker/"
+FOLDER_PATH ='../../docs/' 
 
 
 def get_company_details():
@@ -9,10 +9,10 @@ def get_company_details():
 	companies = set()
 	latlong = []
 	for inputFile in csvFiles:
-		with open(inputFile, 'rb') as f:
+		with open(inputFile, 'r') as f:
 			items = csv.DictReader(f)
 			for item in items:
-				companies.add(item[constants.KEY_COMPANY_NAME])
+				companies.add(item[KEY_COMPANY_NAME])
 				latlong.append(item)
 
 	return companies, latlong

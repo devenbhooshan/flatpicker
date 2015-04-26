@@ -11,7 +11,7 @@
     <title>Find flats nearest to your office | Flatpicker </title>
     {% endblock %}
     
-<link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+<link href="/static/css/bootstrap.css" rel="stylesheet">
 
 <!-- <link href="{% static "css/theme.css" %}" rel="stylesheet"> -->
 
@@ -27,7 +27,7 @@
 <![endif]-->
 <!--[if gt IE 8]><!-->
   
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
   
 <!--<![endif]-->
 
@@ -35,7 +35,7 @@
 
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
 
-<link href="{% static "css/marketing.css" %}" rel="stylesheet">
+<link href="/static/css/marketing.css" rel="stylesheet">
 
   
     <!--[if lte IE 8]>
@@ -70,7 +70,7 @@ g" style="z-index:4">
     </div>
 </div> -->
 
-<div class="splash-container">
+<div class="splash-container" ng-app="lp" ng-controller="LandingpageController as lpcntrl">
 {% block content %}   
     <div class="splash upper">
              
@@ -83,35 +83,30 @@ g" style="z-index:4">
             <a href="/flats/" class="pure-button pure-button-primary">Get Started</a>
         </p> -->
         
-        <form method="post" action="/flats/">
+        <form method="post" action="/flats/" ng-submit="lpcntrl.submitReq()">
           {% csrf_token %} 
+			{% verbatim %}
         <div class="pure-g pure-form">
             <div class="pure-u-1-4">
                 <div class="dropdown">
-                   
-                    <select  name="company" class="form-control drop">
-                      <option>Company</option>
-                      <option>Google</option>
+                    <select  name="company" class="form-control drop" ng-model="lpcntrl.companySelected">
+                      <option ng-repeat="company in lpcntrl.company" >{{company}}</option>
                     </select>
-                    
                 </div>
             </div>    
             <div class="pure-u-1-4">
                <div class="dropdown">
                     
-                    <select  name="city" class="form-control drop">
-                      <option>City</option>
-                      <option>Bangalore</option>
+                    <select  name="city" class="form-control drop" ng-model="lpcntrl.citySelected">
+                      <option ng-repeat="city in lpcntrl.city" >{{city}}</option>
                     </select>
                 </div>
             </div>
             <div class="pure-u-1-4">
                <div class="dropdown">
 
-                    <select name="area" class="form-control drop"  >
-                      <option>Area</option>
-                      <option>All</option>
-                                
+                    <select name="area" class="form-control drop" ng-model="lpcntrl.areaSelected">
+                      <option ng-repeat="area in lpcntrl.area" >{{area}}</option>
                     </select>
                    <!--  <button class="btn btn-default dropdown-toggle drop" type="button" id="menu1" data-toggle="dropdown">Area
                     <span class="caret"></span></button>
@@ -132,6 +127,7 @@ g" style="z-index:4">
                 
             </div>    
              </div>
+			{% endverbatim %}
           </form>
        
 
@@ -150,10 +146,10 @@ g" style="z-index:4">
 </div>
  -->
 
-<script src="{% static "js/jquery-1.11.2.min.js" %}"></script>
-    <script src="{% static "js/bootstrap.js" %}"></script>
-<script>
-</script>
+<script src="/static/js/jquery-1.11.2.min.js"></script>
+<script src="/static/js/angular.min.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/lp/lp.js"></script>
 
 
 

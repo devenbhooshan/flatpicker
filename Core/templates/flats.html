@@ -1,22 +1,21 @@
 {% extends "base.html" %}
-{% load staticfiles %}
-{% load tags %}
 {% block title %}
 <title>{{title}}</title>
 {% endblock %}
 {%block container %}
 <a href='/'>Go Back </a>
 <h1> <span class="glyphicon glyphicon-map-marker"></span> {{h1|safe}}</h1>
-<h4> Total Results {{total}}</h4>
-<div class="row">
-{% for f in flats %}
-<div class="col-sm-5 col-md-6">
+<h4> Total Results </h4>
+<div class="row" ng-app="flatlist" ng-controller="FlatsController as flatcntrl">
+
+{% verbatim %}
+<div class="col-sm-5 col-md-6" ng-repeat="f in flatcntrl.flatDetails">
 	<div class="panel panel-default">
 	  <div class="panel-heading"><h4>{{f.title}} </h4> <p >{{f.location}}</p></div>
 	  <div class="panel-body">
 	  	<div class="row">
 		  	<div class="col-sm-12 col-md-4">
-				<img width="100%" height="100%" style="max-height: 115px;min-height: 115px;" src="{{f.pic_url}}">
+				<img width="100%" height="100%" style="max-height: 115px;min-height: 115px;" ng-src="{{f.url}}">
 			</div>
 			<div class="col-sm-5 col-md-2">
 		  		
@@ -26,7 +25,7 @@
 		  	</div>	
 
 			<div class="col-sm-5 col-md-2">
-		  		<h5>{{ f.bhk|format }} BHK</h5>
+		  		<h5>{{ f.bhk }} BHK</h5>
 		  		<h5>{{ f.furnished }}</h5>
 		  	</div>
 		  	<!-- <div class="col-sm-5 col-md-2">	
@@ -40,8 +39,8 @@
 			<div class="col-sm-5 col-md-4">
 			</div>	
 		  	<div class="col-sm-5 col-md-8">
-		  		<a href="{{f.url|safe}}" target="blank">
-		  			See more info at <img width="30%" height="30%" src="{%static "images/commonfloor.jpg" %}"> </a>  
+		  		<a href="{{f.url}}" target="blank">
+		  			See more info at <img width="30%" height="30%" src="/static/images/commonfloor.jpg"> </a>  
 		  	</div>		
 
 	 
@@ -49,12 +48,13 @@
 	</div>	
 	  </div>
 	</div>
+<script src="/static/js/jquery-1.11.2.min.js"></script>
+<script src="/static/js/angular.min.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/flats/flats.js"></script>
+{% endverbatim %}
+	
 
-	
-	
-	
-	 
-
-{% endfor %}
 </div>
+
 {% endblock %}

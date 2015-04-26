@@ -33,9 +33,9 @@ def generate_seo_tags(**kwargs):
 	return seo_tags
 
 def home(request):
-	companies=Company.objects.all()
+	companies=Company.objects.values_list('name').all()
 
-	return render(request,'lp.html')
+	return render(request,'lp.html',{'companies':companies})
 
 # def fil<p >{{f.location}}</p>ter(request):
 # 	return render(request,'filter.html')
@@ -44,6 +44,8 @@ def get_flats(request,company,city,area):
 	title_all= "Flats nearest to {company} in {city} | Flatpicker"
 	title_area= "Flats nearest to {company} in {area}, {city} | Flatpicker"	
 	
+	h1_all= "Flats nearest to {company} in {city}"
+	h1_area= "Flats nearest to {company} in {area}, {city}"	
 	
 	
 	city=get_object_or_404(City,name=city)
@@ -52,16 +54,17 @@ def get_flats(request,company,city,area):
 	
 	if area.name =='all':
 		title=  title_all.format(company=company.name, city=city.name)  
-		h1 = title_all.format(company="<img src='/static/images/"+ company.img +"'>", city=city.name)  
+		h1 = h1_all.format(company="<img src='/static/images/"+ company.img +"'>", city=city.name)  
 	else:
 		title=  title_area.format(company=company.name, city=city.name, area=area.name)  
-		h1 = title_area.format(company=company.img, city=city.name, area=area.name)
+		h1 = h1_area.format(company="<img src='/static/images/"+ company.img +"'>", city=city.name, area=area.name)
 	
 	locations=LocationCompanyCity.objects.values_list('location').filter(city=city,company=company,area=area)
 
-	flats=Flat.objects.filter(location__in=locations)
+	flats=Flat.objects.filter(location__in=locations,approved=True)
 	total=len(flats)
-	return render(request,'flats.html',{'flats':flats ,'title':title,'h1':h1,'total':total})
+	for_dist=[city,company]
+	return render(request,'flats.html',{'flats':flats ,'title':title,'h1':h1,'total':total ,'for_dist':for_dist})
 
 def city_area(request,company):
 	company=get_object_or_404(Company,name=company)

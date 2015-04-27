@@ -92,7 +92,10 @@ class Picker:
 				print("link : "+ link +" Not crawled" + traceback.format_exc())
 				continue
 			
-			self.add_flat(link,pic,title,price,address,avail,size,bhk,location,company,city,furnished,area,v_l[1])
+			try:
+				self.add_flat(link,pic,title,price,address,avail,size,bhk,location,company,city,furnished,area,v_l[1])
+			except Exception as e:
+				print("Cold not add flat "+str(url)+" Reason: "+ traceback.format_exc())
 
 			self.pic.append(pic)	
 			self.title.append(title)
@@ -157,7 +160,7 @@ class Picker:
 		bhk=float(str(bhk).lower().strip("bhk").strip())
 		bhk,created=BHK.objects.get_or_create(bhk=bhk)
 		location=Location.objects.get_or_create(name=location)[0]
-		price=price.split(" ")[1].strip("/");
+		price=" ".join(price.split(" ")[1:])
 		print(price)
 		print(str(location) + str(distance))
 		if "furnished" in furnished.lower():
@@ -167,10 +170,10 @@ class Picker:
 			
 
 		try:
-			Flat.objects.get(url=link).delete()
-			#Flat.objects.create(title=title,url=link,pic_url=pic,price=price,address=address,bhk=bhk,size=size,location=location,furnished=furnished,approved=approved)
-		except:
 			#Flat.objects.get(url=link).delete()
+			Flat.objects.create(title=title,url=link,pic_url=pic,price=price,address=address,bhk=bhk,size=size,location=location,furnished=furnished,approved=approved)
+		except:
+			Flat.objects.get(url=link).delete()
 			Flat.objects.create(title=title,url=link,pic_url=pic,price=price,address=address,bhk=bhk,size=size,location=location,furnished=furnished,approved=approved)
 		print(location)
 		ll=LocationCompanyCity.objects.get_or_create(location=location,city=city,company=company,area=area)[0]

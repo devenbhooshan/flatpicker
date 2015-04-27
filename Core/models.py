@@ -31,7 +31,7 @@ class Area(models.Model):
 class Flat(models.Model):
 	url=models.URLField(unique=True,null=False)
 	title=models.CharField(max_length=100)
-	price=models.CharField(max_length=10)
+	price=models.CharField(max_length=20)
 	bhk=models.ForeignKey(BHK)
 	address=models.CharField(max_length=300)
 	location=models.ForeignKey(Location)

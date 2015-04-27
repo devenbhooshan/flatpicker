@@ -69,6 +69,7 @@ DATABASES = {
         'ENGINE': 'mysql.connector.django',
         'USER': 'root',
         'PASSWORD': 'Fl@tP1cker',
+	'HOST':'localhost',
         'OPTIONS': {
           'autocommit': True,
         },
@@ -94,6 +95,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+STATIC_ROOT =  BASE_DIR +'/static/'
+#STATICFILES_DIRS = (
+#    os.path.join(BASE_DIR, "static"),
+#)

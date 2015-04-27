@@ -166,15 +166,14 @@ class Picker:
 			
 
 		try:
-			Flat.objects.create(title=title,url=link,pic_url=pic,price=price,address=address,bhk=bhk,size=size,location=location,furnished=furnished,approved=approved)
-		except:
 			Flat.objects.get(url=link).delete()
+			#Flat.objects.create(title=title,url=link,pic_url=pic,price=price,address=address,bhk=bhk,size=size,location=location,furnished=furnished,approved=approved)
+		except:
+			#Flat.objects.get(url=link).delete()
 			Flat.objects.create(title=title,url=link,pic_url=pic,price=price,address=address,bhk=bhk,size=size,location=location,furnished=furnished,approved=approved)
 		ll=LocationCompanyCity.objects.get_or_create(location=location,city=city,company=company,area=area)[0]
 		ll.distance=distance
 		ll.save()
-			
-
 		
 		
 

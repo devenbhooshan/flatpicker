@@ -1,7 +1,7 @@
 import glob, os, csv
 from utils.constants import *
 
-FOLDER_PATH ='../../docs/' 
+FOLDER_PATH ='/home/jolo/docs/' 
 
 
 def get_company_details():

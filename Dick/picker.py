@@ -144,8 +144,6 @@ class Picker:
 				continue	
 				
 		# self.driver.find_element_by_xpath("//div[@id='searchHeaderWidget']/h1").click()
-
-		print("@valid locations")
 		for v_l in valid_locations:
 			print(v_l)
 			self.driver.get(urls['Commonfloor'][city])

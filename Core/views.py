@@ -40,6 +40,58 @@ def home(request):
 # def fil<p >{{f.location}}</p>ter(request):
 # 	return render(request,'filter.html')
 
+def api3(request,company,city,area):
+	title_all= "Flats nearest to {company} in {city} | Flatpicker"
+	title_area= "Flats nearest to {company} in {area}, {city} | Flatpicker"	
+	h1_all= "Flats nearest to {company} in {city}"
+	h1_area= "Flats nearest to {company} in {area}, {city}"	
+	response={}
+	response["company"]=company
+	response["city"]=city
+	response["area"]=area
+	response["flats"]=[]
+	
+	try:
+		city=City.objects.get(name=city)
+		company=Company.objects.get(name=company)
+		area=Area.objects.get(name=area)
+	
+		if area.name =='all':
+			title=  title_all.format(company=company.name, city=city.name)  
+			h1 = h1_all.format(company="<img src='/static/images/"+ company.img +"'>", city=city.name)  
+		else:
+			title=  title_area.format(company=company.name, city=city.name, area=area.name)  
+			h1 = h1_area.format(company="<img src='/static/images/"+ company.img +"'>", city=city.name, area=area.name)
+		
+		locations=LocationCompanyCity.objects.values_list('location').filter(city=city,company=company,area=area)
+		
+		response["h1"]=h1
+		response["title"]=title	
+
+		flats=Flat.objects.filter(location__in=locations,approved=True)
+		total=len(flats)
+		response["total"]=total
+		for flat in flats:
+			flat_dict={}
+			flat_dict["distance"]=LocationCompanyCity.objects.get(location=flat.location,city=city,company=company).distance
+			flat_dict["title"]=flat.title
+			flat_dict["location"]=flat.location.name
+			flat_dict["price"]=flat.price
+			flat_dict["size"]=flat.size
+			flat_dict["bhk"]=flat.bhk.bhk
+			flat_dict["furnished"]=flat.furnished
+			flat_dict["address"]=flat.address
+			flat_dict["source_url"]=flat.url
+			flat_dict["pic_url"]=flat.pic_url
+			response["flats"].append(flat_dict)
+		response["status"]="ok"	
+	except Exception as e:
+		response["status"]="error"
+		response["error"]=str(e)
+
+			
+	return 	HttpResponse(json.dumps(response), content_type='application/json')
+
 def get_flats(request,company,city,area):
 	title_all= "Flats nearest to {company} in {city} | Flatpicker"
 	title_area= "Flats nearest to {company} in {area}, {city} | Flatpicker"	
@@ -67,32 +119,43 @@ def get_flats(request,company,city,area):
 	return render(request,'flats.html',{'flats':flats ,'title':title,'h1':h1,'total':total ,'for_dist':for_dist})
 
 def city_area(request,company):
-	company=get_object_or_404(Company,name=company)
-	locations=LocationCompanyCity.objects.filter(company=company)
 	area=[]
 	city=[]
-	for l in locations:
-		if l.city.name not in city:
-			city.append(l.city.name)
-		if l.area.name not in area:
-			area.append(l.area.name)
-	data={'area':area,'city':city}
-	return HttpResponse(json.dumps(data), content_type='application/json')		
+	response={}
+	try:
+		company=Company.objects.get(name=company)
+		locations=LocationCompanyCity.objects.filter(company=company)
+		for l in locations:
+			if l.city.name not in city:
+				city.append(l.city.name)
+			if l.area.name not in area:
+				area.append(l.area.name)
+		response['status']='ok'		
+	except Exception as e:
+		response['status']='error'
+		response['error']=str(e)
+
+	response['area']=area
+	response['city']=city
+	return HttpResponse(json.dumps(response), content_type='application/json')		
 
 
 def area(request,company,city):
-	company=get_object_or_404(Company,name=company)
-	city=get_object_or_404(City,name=city)
-
-	locations=LocationCompanyCity.objects.filter(company=company,city=city)
-	
+	response={}
 	area=[]
+	try:
+		company=Company.objects.get(name=company)
+		city=City.objects.get(name=city)
+		locations=LocationCompanyCity.objects.filter(company=company,city=city)	
+		for l in locations:
+			if l.area.name not in area:
+				area.append(l.area.name)
+	except Exception as e:
+		response['status']='error'
+		response['error']=str(e)
+	response['area']=area			
 	
-	for l in locations:
-		if l.area.name not in area:
-			area.append(l.area.name)
-	data={'area':area}
-	return HttpResponse(json.dumps(data), content_type='application/json')		
+	return HttpResponse(json.dumps(response), content_type='application/json')		
 	
 			
 def flats(request):
@@ -107,3 +170,4 @@ def flats(request):
 		area='all'
 	url=url.format(company=company, city=city, area=area)
 	return HttpResponseRedirect(url)	
+

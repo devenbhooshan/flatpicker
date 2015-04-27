@@ -1,0 +1,105 @@
+@charset "utf-8";
+/* CSS Document */
+
+input[type="submit"] {
+  height:50px;
+  font-family: sans-serif;
+  font-size: 18px;
+  padding:2px 5px 2px 5px;
+  background-color:#FFF;
+  color:#555;
+  border: 2px solid #ddd;
+  box-shadow: none;
+  margin-bottom: 1em;
+  width:150px;
+}
+select
+{
+  height:50px;
+  font-family: sans-serif;
+  font-size: 18px;
+  padding:2px 5px 2px 5px;
+  background-color:#FFF;
+  color:#555;
+  border: 2px solid #ddd;
+  box-shadow: none;
+  margin-bottom: 1em;
+  width:150px;
+}
+.text
+{
+	opacity:0.8;
+	font-size:16px;
+	text-transform:uppercase;
+}
+.splash-text
+{
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    border: 3px solid white;
+    padding: 1em 1.2em;
+	text-align:center;
+    font-weight: 100;
+    border-radius: 5px;
+    line-height: 1em;
+
+}
+.main
+{
+	width:620px;
+	top:100px;
+	position:relative;
+}
+@media screen and (max-width:660px){
+	.splash-text
+	{
+		font-size:28px;
+	}
+	select
+	{
+	  width:200px;
+	}
+	.main
+	{
+		width:200px;
+	}
+	input[type="submit"] {
+		width:200px;
+	}
+}
+.flat-information
+{
+	width:100%;
+	top:100px;
+	position:relative;
+	border:#000 thin solid;
+}
+.flat-information-top-bar
+{
+	width:100%;
+	position:relative;
+	background:#FFF;
+	box-shadow: 0px 0px 5px 0px #888888;
+	height:70px;
+	color:#555;
+	font-family:sans-serif;
+	font-size:30px;
+	line-height:1em;
+	padding:15px 10px 10px 50px;
+	text-align:left;
+	float:left;
+}
+.flat-information-top-bar-picker
+{
+	position:relative;
+	float:left;
+	color:#555;
+}
+.flat-information-flat-details
+{
+	width:90%;
+	top:100px;
+	position:relative;
+	border:#000 thin solid;
+}

@@ -10,12 +10,12 @@
 		this.citySelected=this.city[0];
 		this.area=["Area", "All"];
 		this.areaSelected=this.area[0];
+		this.visibilityToggle=true;
 		this.initialize=function(){
 			// HTTP get requests
 		};
 		this.submitReq=function(){
-			$http.post('/flats/').success(function(data){
-			});
+			this.visibilityToggle=false;
 		};
 	}]);
 })();

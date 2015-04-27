@@ -12,139 +12,55 @@
     {% endblock %}
     
 <link href="/static/css/bootstrap.css" rel="stylesheet">
-
-<!-- <link href="{% static "css/theme.css" %}" rel="stylesheet"> -->
-
-
 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-
-
-
-<!--[if lte IE 8]>
-  
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
-  
-<![endif]-->
-<!--[if gt IE 8]><!-->
-  
+<link rel="stylesheet" href="/static/css/style.css">
 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
-  
-<!--<![endif]-->
-
-
-
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-
 <link href="/static/css/marketing.css" rel="stylesheet">
-
-  
-    <!--[if lte IE 8]>
-        <link rel="stylesheet" href="/combo/1.18.13?/css/layouts/marketing-old-ie.css">
-    <![endif]-->
-    
-  
-
-
-    
-<!--[if lt IE 9]>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
-<![endif]-->
 g" style="z-index:4">
-
-
-
-
 </head>
 <body>
-
-
-
-
-
-
-<!-- <div class="header">
-    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-        <a class="pure-menu-heading" href="/">Flatpicker</a>
-
-        
-    </div>
-</div> -->
-
-<div class="splash-container" ng-app="lp" ng-controller="LandingpageController as lpcntrl">
+<div class="splash-container" align="center" ng-app="lp" ng-controller="LandingpageController as lpcntrl">
 {% block content %}   
-    <div class="splash upper">
-             
-        <h1 class="splash-head">
+        <div align="center" class="main" ng-show="lpcntrl.visibilityToggle">
+        <h1 class="splash-text">
             <span class="glyphicon glyphicon-map-marker"></span> Flatpicker </h1>
-        <p class="splash-subhead">
-            Find flats nearest to your company/office. <!-- (Currently available for Bangalore only) -->
+        <p class="text">
+            Find flats nearest to your company/office.
         </p>
-        <!-- <p>
-            <a href="/flats/" class="pure-button pure-button-primary">Get Started</a>
-        </p> -->
-        
         <form method="post" action="/flats/" ng-submit="lpcntrl.submitReq()">
           {% csrf_token %} 
 			{% verbatim %}
-        <div class="pure-g pure-form">
-            <div class="pure-u-1-4">
-                <div class="dropdown">
-                    <select  name="company" class="form-control drop" ng-model="lpcntrl.companySelected">
+                    <select  name="company" ng-model="lpcntrl.companySelected">
                       <option ng-repeat="company in lpcntrl.company" >{{company}}</option>
                     </select>
-                </div>
-            </div>    
-            <div class="pure-u-1-4">
-               <div class="dropdown">
                     
-                    <select  name="city" class="form-control drop" ng-model="lpcntrl.citySelected">
+                    <select  name="city" ng-model="lpcntrl.citySelected">
                       <option ng-repeat="city in lpcntrl.city" >{{city}}</option>
                     </select>
-                </div>
-            </div>
-            <div class="pure-u-1-4">
-               <div class="dropdown">
-
-                    <select name="area" class="form-control drop" ng-model="lpcntrl.areaSelected">
+                    <select name="area" ng-model="lpcntrl.areaSelected">
                       <option ng-repeat="area in lpcntrl.area" >{{area}}</option>
                     </select>
-                   <!--  <button class="btn btn-default dropdown-toggle drop" type="button" id="menu1" data-toggle="dropdown">Area
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-                      <li role="presentation" class="divider"></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-                    </ul>  -->  
-                </div>
-            </div>
-
-            <div class="pure-u-1-4" >
-
-                <input  class="btn btn-default  drop" type="submit"  style="text-align:center">
-                  
-                
-            </div>    
-             </div>
+                <input type="submit" value="Submit"  style="text-align:center"/>
 			{% endverbatim %}
           </form>
+       </div>
        
+        <div align="center" class="flat-information" ng-show="lpcntrl.visibilityToggle">
+        <div class="flat-information-top-bar"><span class="glyphicon glyphicon-map-marker"></span>Flatpicker
+        </div>
+        <h1 class="splash-text">
+            <span class="glyphicon glyphicon-map-marker"></span> Flatpicker </h1>
+            
+        <p class="text">
+            Find flats nearest to your company/office.
+        </p>
+       </div>
+        <div class="flat-information-flat-details"><span class="glyphicon glyphicon-map-marker"></span>Flatpicker
+        </div>
 
-    </div>
     {% endblock %}
 </div>
-
-<!-- 
-<div class="content-wrapper">
-    
-
-    <div class="footer l-box is-center">
-        View the source of this layout to learn more. Made with love by the YUI Team.
-    </div>
-
-</div>
- -->
 
 <script src="/static/js/jquery-1.11.2.min.js"></script>
 <script src="/static/js/angular.min.js"></script>

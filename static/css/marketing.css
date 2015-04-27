@@ -70,13 +70,6 @@ label {
     font-size: 100%;
 }
 
-.pure-form input[type] {
-    border: 2px solid #ddd;
-    box-shadow: none;
-    font-size: 100%;
-    width: 100%;
-    margin-bottom: 1em;
-}
 
 /*
  * -- PURE BUTTON STYLES --
@@ -130,6 +123,7 @@ a.pure-button-primary {
 .home-menu a {
     color: #6FBEF3;
 }
+
 .home-menu li a:hover,
 .home-menu li a:focus {
     background: none;
@@ -169,7 +163,7 @@ a.pure-button-primary {
 
 /* This is the main heading that appears on the blue section */
 .splash-head {
-    font-size: 20px;
+    font-size: 250%;
     font-weight: bold;
     color: white;
     border: 3px solid white;

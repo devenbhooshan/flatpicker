@@ -1,0 +1,3 @@
+*.pyc
+Flatpicker/local_settings.py
+local_manage.py

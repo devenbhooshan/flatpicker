@@ -71,9 +71,8 @@ select
 .flat-information
 {
 	width:100%;
-	top:100px;
+	top:0px;
 	position:relative;
-	border:#000 thin solid;
 }
 .flat-information-top-bar
 {
@@ -98,8 +97,67 @@ select
 }
 .flat-information-flat-details
 {
-	width:90%;
-	top:100px;
+	width:83%;
+	top:50px;
+	left:3%;
 	position:relative;
-	border:#000 thin solid;
+}
+.flat-information-flat-details-card
+{
+	width:45%;
+	margin: 10px 25px 10px 25px ;
+	position:relative;
+	float:left;
+	background:#FFF;
+}
+.flat-information-flat-details-card-top-card
+{
+	width:100%;
+	color:#00;
+	font: sans-serif;
+	font-size:24px;
+	padding: 10px 10px 5px 10px;
+}
+.flat-information-flat-details-card-location
+{
+	width:100%px;
+	color:#555;
+	font: sans-serif;
+	font-size:18px;
+}
+.flat-information-flat-details-card-information
+{
+	width:100%px;
+	font: sans-serif;
+	padding-top: 5px;
+}
+.flat-information-flat-details-card-information-image
+{
+	width:16%;
+	font: sans-serif;
+	padding-top: 5px;
+	color:#555;
+	float:left;
+	position:relative;
+	padding-left:20px;
+}
+.flat-information-flat-details-card-information-information
+{
+	width:80%;
+	font: sans-serif;
+	padding-top: 5px;
+	font-size:18px;
+	color:#555;
+	float:left;
+	position:relative;
+	margin-left:20px;
+}
+.flat-information-flat-details-card-bottom
+{
+	width:100%;
+	font: sans-serif;
+	padding-top: 5px;
+	float:left;
+	position:relative;
+	color:#555;
 }

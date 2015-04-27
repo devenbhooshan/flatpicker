@@ -19,8 +19,8 @@
 <link href="/static/css/marketing.css" rel="stylesheet">
 g" style="z-index:4">
 </head>
-<body>
-<div class="splash-container" align="center" ng-app="lp" ng-controller="LandingpageController as lpcntrl">
+<body ng-app="lp" ng-controller="LandingpageController as lpcntrl">
+<div class="splash-container" align="center">
 {% block content %}   
         <div align="center" class="main" ng-show="lpcntrl.visibilityToggle">
         <h1 class="splash-text">
@@ -28,7 +28,7 @@ g" style="z-index:4">
         <p class="text">
             Find flats nearest to your company/office.
         </p>
-        <form method="post" action="/flats/" ng-submit="lpcntrl.submitReq()">
+        <form method="post" ng-submit="lpcntrl.submitReq()">
           {% csrf_token %} 
 			{% verbatim %}
                     <select  name="company" ng-model="lpcntrl.companySelected">
@@ -45,19 +45,58 @@ g" style="z-index:4">
 			{% endverbatim %}
           </form>
        </div>
+			{% verbatim %}
        
-        <div align="center" class="flat-information" ng-show="lpcntrl.visibilityToggle">
+        <div align="center" class="flat-information" ng-show="!lpcntrl.visibilityToggle">
         <div class="flat-information-top-bar"><span class="glyphicon glyphicon-map-marker"></span>Flatpicker
         </div>
-        <h1 class="splash-text">
-            <span class="glyphicon glyphicon-map-marker"></span> Flatpicker </h1>
-            
-        <p class="text">
-            Find flats nearest to your company/office.
-        </p>
-       </div>
-        <div class="flat-information-flat-details"><span class="glyphicon glyphicon-map-marker"></span>Flatpicker
+        
+        
+        <div class="flat-information-flat-details" align="center">
+
+
+        <span class="flat-information-flat-details-card" ng-repeat="f in lpcntrl.flatDetails">
+        	<div class="flat-information-flat-details-card-top-card">{{f.title}}</div>
+        	<div class="flat-information-flat-details-card-location">{{f.location}}
+            <hr color="#555">
+            </div>
+        <div class="flat-information-flat-details-card-information">
+        	<span class="flat-information-flat-details-card-information-image"><img ng-src="{{f.url}}" width="110" align="absmiddle"></span>
+            <span class="flat-information-flat-details-card-information-information">
+            <table>
+            <tr>
+            <td>Price :</td>
+            <td>{{f.price}}</td>
+            </tr>
+            <tr>
+            <td>Size :</td>
+            <td>{{f.size}} Sq. Ft.</td>
+            </tr>
+            <tr>
+            <td>BHK :</td>
+            <td>{{f.bhk}}</td>
+            </tr>
+            <tr>
+            <td>Furnished :</td>
+            <td>{{f.furnished}}</td>
+            </tr>
+            <tr>
+            <td>Address :</td>
+            <td>{{f.address}}</td>
+            </tr>
+            </table>
+            </span>
+        <span class="flat-information-flat-details-card-bottom">
+            <hr color="#555">
+         <img width="20%" height="20%" src="/static/images/commonfloor.jpg"></span>
         </div>
+        </span>
+        
+        </div>
+        
+        
+       </div>
+			{% endverbatim %}
 
     {% endblock %}
 </div>

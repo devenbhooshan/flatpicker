@@ -103,7 +103,7 @@ class Picker:
 			self.bhk.append(bhk)
 
 	def commonfloor(self,city,locations,company,area):
-		self.driver.get(urls['Commonfloor'][city])
+		self.driver.get(urls['Commonfloor'][city.name])
 		
 		# driver.find_element_by_xpath("//div[@class='pstd-by-wrp filter-chkbox-block']/label[@class='-lbl'][2]").click()
 		import time
@@ -146,7 +146,7 @@ class Picker:
 		# self.driver.find_element_by_xpath("//div[@id='searchHeaderWidget']/h1").click()
 		for v_l in valid_locations:
 			print(v_l)
-			self.driver.get(urls['Commonfloor'][city])
+			self.driver.get(urls['Commonfloor'][city.name])
 			self.crawl(v_l,company,area,city)
 		
 		self.close()
@@ -157,7 +157,8 @@ class Picker:
 		bhk=float(str(bhk).lower().strip("bhk").strip())
 		bhk,created=BHK.objects.get_or_create(bhk=bhk)
 		location=Location.objects.get_or_create(name=location)[0]
-		
+		price=price.split(" ")[1].strip("/");
+		print(price)
 		print(str(location) + str(distance))
 		if "furnished" in furnished.lower():
 			approved=True
@@ -171,6 +172,7 @@ class Picker:
 		except:
 			#Flat.objects.get(url=link).delete()
 			Flat.objects.create(title=title,url=link,pic_url=pic,price=price,address=address,bhk=bhk,size=size,location=location,furnished=furnished,approved=approved)
+		print(location)
 		ll=LocationCompanyCity.objects.get_or_create(location=location,city=city,company=company,area=area)[0]
 		ll.distance=distance
 		ll.save()

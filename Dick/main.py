@@ -27,11 +27,14 @@ for ll in latlong:
 			ll[constants.KEY_LONGITUDE],
 			rectricted_terms[ll[constants.KEY_CITY]])
 		print("All Locations:" + str(location) +  " : " +str(len(location)))
-		company=Company.objects.get(name=company)
+		company=Company.objects.get_or_create(name=company)[0]
+		city=City.objects.get_or_create(name=ll[constants.KEY_CITY])[0]
+		area=Area.objects.get_or_create(name=ll[constants.KEY_LOCALITY])[0]
 		p=Picker()
-		valid_locations=p.commonfloor(ll[constants.KEY_CITY],
+		location=location[2:5]
+		valid_locations=p.commonfloor(city,
 			location,
 			company,
-			ll[constants.KEY_LOCALITY])
+			area)
 	except Exception as e:	
 		print ("Error: Could not crawl " + company.name+ " . Reason : " + traceback.format_exc())

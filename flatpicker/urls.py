@@ -7,13 +7,13 @@ urlpatterns = patterns('',
     
     # url(r'^flats/(\w+)/(\w+)/$', 'Core.views.flats', name='flats'),
     
-    url(r'^api/(\w+)/(\w+)/(\w+)/', 'Core.views.api3', name='api3'),
+    url(r'^api/([\w ]+)/([\w ]+)/([\w ]+)/', 'Core.views.api3', name='api3'),
     # url(r'^api/(\w+)/(\w+)/', 'Core.views.api2', name='api2'),
     # url(r'^api/(\w+)/', 'Core.views.api1', name='api1'),
-    url(r'^api/(\w+)/(\w+)/$', 'Core.views.area', name='area'),
-    url(r'^api/(\w+)/$', 'Core.views.city_area', name='city_area'),
+    url(r'^api/([\w ]+)/([\w ]+)/$', 'Core.views.area', name='area'),
+    url(r'^api/([\w ]+)/$', 'Core.views.city_area', name='city_area'),
     
-    url(r'^flats/(\w+)/(\w+)/(\w+)/$', 'Core.views.get_flats', name='get_flats'),
+    url(r'^flats/([\w ]+)/([\w ]+)/([\w ]+)/$', 'Core.views.get_flats', name='get_flats'),
     url(r'^flats/', 'Core.views.flats', name='flats'),
     
     # url(r'^flats/', 'Core.views.filter', name='filter'),

@@ -14,7 +14,7 @@
 		this.initialize=function(){
 			// HTTP get requests
 		};
-		this.flatDetails=[];
+		this.flatDetails=[{title:"3BHK Apartment for Rent",location:"Old Madras Road, Bangalore",price:"21,000/ M",size:"1400",bhk:"3",furnished:"",address:"Old Madras Road, Bangalore",pic_url:"http://ak.is2.cfcdn.com/is/p/t20/642x483/public/property-listing-images/verified/actual_size/54f53f76c391f.gif",dist:""},{title:"3BHK Apartment for Rent",location:"Old Madras Road, Bangalore",price:"21,000/ M",size:"1400",bhk:"3",furnished:"",address:"Old Madras Road, Bangalore",pic_url:"http://ak.is2.cfcdn.com/is/p/t20/642x483/public/property-listing-images/verified/actual_size/54f53f76c391f.gif"}];
 		this.submitReq=function(){
 			this.visibilityToggle=false;
 			$http.get('/api/'+this.companySelected+"/"+this.citySelected+"/"+this.areaSelected).success(function(data){

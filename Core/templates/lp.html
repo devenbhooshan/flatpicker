@@ -58,10 +58,9 @@ g" style="z-index:4">
         <span class="flat-information-flat-details-card" ng-repeat="f in lpcntrl.flatDetails">
         	<div class="flat-information-flat-details-card-top-card">{{f.title}}</div>
         	<div class="flat-information-flat-details-card-location">{{f.location}}
-            <hr color="#555">
             </div>
         <div class="flat-information-flat-details-card-information">
-        	<span class="flat-information-flat-details-card-information-image"><img ng-src="{{f.pic_url}}" width="110" align="absmiddle"></span>
+        	<span class="flat-information-flat-details-card-information-image"><img ng-src="{{f.pic_url}}" width="130" align="absmiddle"></span>
             <span class="flat-information-flat-details-card-information-information">
             <table>
             <tr>
@@ -80,14 +79,12 @@ g" style="z-index:4">
             <td>Furnished :</td>
             <td>{{f.furnished}}</td>
             </tr>
-            <tr>
-            <td>Address :</td>
-            <td>{{f.address}}</td>
-            </tr>
             </table>
             </span>
+        <span class="flat-information-flat-details-card-bottom-address">
+		{{f.address}}
+        </span>
         <span class="flat-information-flat-details-card-bottom">
-            <hr color="#555">
          <img width="20%" height="20%" src="/static/images/commonfloor.jpg"></span>
         </div>
         </span>

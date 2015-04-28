@@ -97,23 +97,29 @@ select
 }
 .flat-information-flat-details
 {
-	width:83%;
+	width:1100px;
 	top:50px;
-	left:3%;
 	position:relative;
 }
 .flat-information-flat-details-card
 {
-	width:45%;
-	margin: 10px 25px 10px 25px ;
+	width:500px;
 	position:relative;
 	float:left;
 	background:#FFF;
 }
+.flat-information-flat-details-card:nth-child(odd)
+{
+	margin: 10px 25px 10px 25px ;
+}
+.flat-information-flat-details-card:nth-child(even)
+{
+	margin: 10px 0px 10px 25px ;
+}
 .flat-information-flat-details-card-top-card
 {
 	width:100%;
-	color:#00;
+	color:#000;
 	font: sans-serif;
 	font-size:24px;
 	padding: 10px 10px 5px 10px;
@@ -124,9 +130,11 @@ select
 	color:#555;
 	font: sans-serif;
 	font-size:18px;
+	border-bottom:#d7d6d6 thin solid;
 }
 .flat-information-flat-details-card-information
 {
+	margin-top:10px;
 	width:100%px;
 	font: sans-serif;
 	padding-top: 5px;
@@ -152,6 +160,17 @@ select
 	position:relative;
 	margin-left:20px;
 }
+.flat-information-flat-details-card-bottom-address
+{
+	width:100%;
+	font: sans-serif;
+	padding-top: 5px;
+	float:left;
+	position:relative;
+	color:#555;
+	font-size:18px;
+	border-bottom:#d7d6d6 thin solid;
+}
 .flat-information-flat-details-card-bottom
 {
 	width:100%;
@@ -160,4 +179,10 @@ select
 	float:left;
 	position:relative;
 	color:#555;
+}
+@media screen and (max-width:1100px){
+	.flat-information-flat-details
+	{
+		width:550px;
+	}
 }

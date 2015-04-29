@@ -31,11 +31,11 @@ g" style="z-index:4">
         <form method="post" ng-submit="lpcntrl.submitReq()">
           {% csrf_token %} 
 			{% verbatim %}
-                    <select  name="company" ng-model="lpcntrl.companySelected">
+                    <select  name="company" ng-model="lpcntrl.companySelected" ng-change="lpcntrl.getCity()">
                       <option ng-repeat="company in lpcntrl.company" >{{company}}</option>
                     </select>
                     
-                    <select  name="city" ng-model="lpcntrl.citySelected">
+                    <select  name="city" ng-model="lpcntrl.citySelected" ng-change="lpcntrl.getArea()">
                       <option ng-repeat="city in lpcntrl.city" >{{city}}</option>
                     </select>
                     <select name="area" ng-model="lpcntrl.areaSelected">

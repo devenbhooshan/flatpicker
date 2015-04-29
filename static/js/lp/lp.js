@@ -6,9 +6,8 @@
 		lp=this;
 		this.company=["IBM","Google","TCS","Accenture","Musigma","Cisco","Infosys","Cognizant","Bosch","Microsoft","Amazon"];
 		this.companySelected=this.company[0];
-		this.city=["Bangalore"];
-		this.citySelected=this.city[0];
-			this.area=["Vijay Nagar","Bannerghatta Main Rd","Nagawara, Outer Ring Road","Bennigana Halli","K R Puram","Electronic City","Sheshadri Road Gandhinagar","Audugodi","Mylasandra & Patanegere Villages","Bannerghatta Road","Bellandur","Bannerghatta Main Road","Cunningham Road","Whitefield","Brookfield","Brigade South Parade M.G. Road","Krishnarajpuram Hobli","Manipal Center","Koramangala","Electronics City","Manayata Tech Park","CV Raman Nagar","Sampangi Rama Nagar","Rustam Bagh Layout","Hosur Road Adugodi","Challaghatta","Ashok Nagar", "Rajkumar Road"];
+		this.city=[];
+		this.area=[];
 		this.areaSelected=this.area[0];
 		this.visibilityToggle=true;
 		this.initialize=function(){
@@ -33,6 +32,18 @@
 				}
 					lp.flatDetailsLeft=lp.flatDetails.slice(0,length/2);
 					lp.flatDetailsRight=lp.flatDetails.slice(length/2,length);
+			});
+		};
+		this.getCity=function(){
+			$http.get('http://flatpicker.in/api/'+this.companySelected).success(function(data){
+				lp.city=data["city"];
+				lp.citySelected=lp.city[0];
+			});
+		};
+		this.getArea=function(){
+			$http.get('http://flatpicker.in/api/'+this.companySelected).success(function(data){
+				lp.area=data["area"];
+				lp.areaSelected=lp.city[0];
 			});
 		};
 	}]);

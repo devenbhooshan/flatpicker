@@ -101,20 +101,29 @@ select
 	top:50px;
 	position:relative;
 }
+.flat-information-flat-details-left
+{
+	width:500px;
+	position:relative;
+	float:left;
+	margin: 10px 25px 10px 25px ;
+}
+.flat-information-flat-details-right
+{
+	width:500px;
+	position:relative;
+	float:left;
+	margin: 10px 0px 10px 25px ;
+}
+
 .flat-information-flat-details-card
 {
 	width:500px;
 	position:relative;
 	float:left;
 	background:#FFF;
-}
-.flat-information-flat-details-card:nth-child(odd)
-{
-	margin: 10px 25px 10px 25px ;
-}
-.flat-information-flat-details-card:nth-child(even)
-{
-	margin: 10px 0px 10px 25px ;
+	margin-top:10px;
+	margin-bottom:10px;
 }
 .flat-information-flat-details-card-top-card
 {
@@ -180,6 +189,7 @@ select
 	position:relative;
 	color:#555;
 }
+
 @media screen and (max-width:1100px){
 	.flat-information-flat-details
 	{

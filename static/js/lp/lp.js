@@ -19,7 +19,7 @@
 		this.areaError=false;
 
 		this.submitReq=function(){
-			var flag = true;
+			var flag = false;
 			if(this.citySelected=="City")
 			{
 				flag=true;
@@ -32,6 +32,8 @@
 			}
 			if(!flag)
 			{
+				this.cityError=false;
+				this.areaError=false;
 				this.visibilityToggle=false;
 				$http.get('http://flatpicker.in/api/'+this.companySelected+"/"+this.citySelected+"/"+this.areaSelected).success(function(data){
 					lp.flatDetails=data['flats'];

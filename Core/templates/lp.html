@@ -50,7 +50,21 @@ g" style="z-index:4">
         <div align="center" class="flat-information" ng-show="!lpcntrl.visibilityToggle">
         <div class="flat-information-top-bar"><span class="glyphicon glyphicon-map-marker"></span>Flatpicker
         </div>
-        
+        <div align="center" class="flat-information-top-bar-picker">
+        <form method="post" ng-submit="lpcntrl.submitReq()">
+                    <select  name="company" ng-model="lpcntrl.companySelected" ng-change="lpcntrl.getCity()">
+                      <option ng-repeat="company in lpcntrl.company" >{{company}}</option>
+                    </select>
+                    
+                    <select  name="city" ng-model="lpcntrl.citySelected" ng-change="lpcntrl.getArea()" ng-class="{error:lpcntrl.cityError}">
+                      <option ng-repeat="city in lpcntrl.city" >{{city}}</option>
+                    </select>
+                    <select name="area" ng-model="lpcntrl.areaSelected" ng-class="{error:lpcntrl.areaError}">
+                      <option ng-repeat="area in lpcntrl.area" >{{area}}</option>
+                    </select>
+                <input type="submit" value="Submit"  style="text-align:center"/>
+          </form>
+        </div>
         
         <div class="flat-information-flat-details" align="center">
 

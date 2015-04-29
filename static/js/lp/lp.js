@@ -43,7 +43,7 @@
 		this.getArea=function(){
 			$http.get('http://flatpicker.in/api/'+this.companySelected+"/"+this.citySelected).success(function(data){
 				lp.area=data["area"];
-				lp.areaSelected=lp.city[0];
+				lp.areaSelected=lp.area[0];
 			});
 		};
 	}]);

@@ -26,6 +26,10 @@ select
   margin-bottom: 1em;
   width:150px;
 }
+.error
+{
+  border: 2px solid #d12020;
+}
 .text
 {
 	opacity:0.8;

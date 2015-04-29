@@ -35,10 +35,10 @@ g" style="z-index:4">
                       <option ng-repeat="company in lpcntrl.company" >{{company}}</option>
                     </select>
                     
-                    <select  name="city" ng-model="lpcntrl.citySelected" ng-change="lpcntrl.getArea()">
+                    <select  name="city" ng-model="lpcntrl.citySelected" ng-change="lpcntrl.getArea()" ng-class="{error:lpcntrl.cityError}">
                       <option ng-repeat="city in lpcntrl.city" >{{city}}</option>
                     </select>
-                    <select name="area" ng-model="lpcntrl.areaSelected">
+                    <select name="area" ng-model="lpcntrl.areaSelected" ng-class="{error:lpcntrl.areaError}">
                       <option ng-repeat="area in lpcntrl.area" >{{area}}</option>
                     </select>
                 <input type="submit" value="Submit"  style="text-align:center"/>

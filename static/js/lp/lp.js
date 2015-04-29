@@ -38,6 +38,7 @@
 			$http.get('http://flatpicker.in/api/'+this.companySelected).success(function(data){
 				lp.city=data["city"];
 				lp.citySelected=lp.city[0];
+				lp.getArea();
 			});
 		};
 		this.getArea=function(){

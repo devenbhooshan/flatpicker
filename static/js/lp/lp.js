@@ -21,7 +21,6 @@
 			this.visibilityToggle=false;
 			$http.get('http://flatpicker.in/api/'+this.companySelected+"/"+this.citySelected+"/"+this.areaSelected).success(function(data){
 				lp.flatDetails=data['flats'];
-			});
 				var length;
 				if(lp.flatDetails.length%2==0)
 				{
@@ -34,6 +33,7 @@
 				}
 					lp.flatDetailsLeft=lp.flatDetails.slice(0,length/2);
 					lp.flatDetailsRight=lp.flatDetails.slice(length/2,length);
+			});
 		};
 	}]);
 })();

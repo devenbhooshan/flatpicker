@@ -92,6 +92,16 @@ def api3(request,company,city,area):
 			
 	return 	HttpResponse(json.dumps(response), content_type='application/json')
 
+def company(request):
+	response={}
+	company_list=[]
+	companies=Company.objects.all()
+	for company in companies:
+		company_list.append(company.name)
+	response['company_list']=company_list
+	return 	HttpResponse(json.dumps(response), content_type='application/json')
+
+
 def get_flats(request,company,city,area):
 	title_all= "Flats nearest to {company} in {city} | Flatpicker"
 	title_area= "Flats nearest to {company} in {area}, {city} | Flatpicker"	
@@ -119,7 +129,6 @@ def get_flats(request,company,city,area):
 	return render(request,'flats.html',{'flats':flats ,'title':title,'h1':h1,'total':total ,'for_dist':for_dist})
 
 def city_area(request,company):
-	area=[]
 	city=[]
 	response={}
 	try:
@@ -128,14 +137,10 @@ def city_area(request,company):
 		for l in locations:
 			if l.city.name not in city:
 				city.append(l.city.name)
-			if l.area.name not in area:
-				area.append(l.area.name)
 		response['status']='ok'		
 	except Exception as e:
 		response['status']='error'
 		response['error']=str(e)
-
-	response['area']=area
 	response['city']=city
 	return HttpResponse(json.dumps(response), content_type='application/json')		
 

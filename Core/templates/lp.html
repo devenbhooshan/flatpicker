@@ -77,45 +77,47 @@
             <div class="flat-information-flat-details" align="center">
                 <span class="flat-information-flat-details-left">
                     <span class="flat-information-flat-details-card" ng-repeat="f in lpcntrl.flatDetailsLeft">
-                        <div class="flat-information-flat-details-card-top-card">{{f.title}}</div>
-                        <div class="flat-information-flat-details-card-location">{{f.location}}</div>
-                        <div class="flat-information-flat-details-card-information">
-                            <span class="flat-information-flat-details-card-information-image">
-                                <img ng-src="{{f.pic_url}}" width="130" align="absmiddle">
-                            </span>
-                            <span class="flat-information-flat-details-card-information-information">
-                                <table>
-                                    <tr>
-                                        <td>Price :</td>
-                                        <td>{{f.price}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Size :</td>
-                                        <td>{{f.size}} Sq. Ft.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>BHK :</td>
-                                        <td>{{f.bhk}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Furnished :</td>
-                                        <td>{{f.furnished}}</td>
-                                    </tr>
-                                </table>
-                            </span>
-                            <span class="flat-information-flat-details-card-bottom-address">
-                                {{f.address}}
-                            </span>
-                            <span class="flat-information-flat-details-card-bottom">
-                                <img width="20%" height="20%" src="/static/images/commonfloor.jpg">
-                            </span>
-                        </div>
+                        <a ng-href="{{f.source_url}}" target="_blank">
+                            <div class="flat-information-flat-details-card-top-card">{{f.title}}</div>
+                            <div class="flat-information-flat-details-card-location">{{f.location}}</div>
+                            <div class="flat-information-flat-details-card-information">
+                                <span class="flat-information-flat-details-card-information-image">
+                                    <img ng-src="{{f.pic_url}}" width="130" align="absmiddle">
+                                </span>
+                                <span class="flat-information-flat-details-card-information-information">
+                                    <table>
+                                        <tr>
+                                            <td>Price :</td>
+                                            <td>{{f.price}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Size :</td>
+                                            <td>{{f.size}} Sq. Ft.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>BHK :</td>
+                                            <td>{{f.bhk}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Furnished :</td>
+                                            <td>{{f.furnished}}</td>
+                                        </tr>
+                                    </table>
+                                </span>
+                                <span class="flat-information-flat-details-card-bottom-address">
+                                    {{f.address}}
+                                </span>
+                                <span class="flat-information-flat-details-card-bottom">
+                                    <img width="20%" height="20%" src="/static/images/commonfloor.jpg">
+                                </span>
+                            </div>
+                        </a>
                     </span>
                 </span>
 
                 <span class="flat-information-flat-details-right">
                     <span class="flat-information-flat-details-card" ng-repeat="f in lpcntrl.flatDetailsRight">
-                        <a ng-href="{{f.url}}">
+                        <a ng-href="{{f.source_url}}" target="_blank">
                             <div class="flat-information-flat-details-card-top-card">{{f.title}}</div>
                             <div class="flat-information-flat-details-card-location">{{f.location}}</div>
                             <div class="flat-information-flat-details-card-information">
@@ -159,6 +161,17 @@
         {% endblock %}
     </div>
 
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-62494868-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
     <script src="/static/js/jquery-1.11.2.min.js"></script>
     <script src="/static/js/angular.min.js"></script>
     <script src="/static/js/bootstrap.js"></script>

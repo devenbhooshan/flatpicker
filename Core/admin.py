@@ -3,7 +3,7 @@ from django.contrib import admin
 from Core.models import *
 
 class FlatAdmin(admin.ModelAdmin):
-	list_filter=['approved','location','bhk']
+	list_filter=['approved','location','bhk','crawled']
 	list_display=['approved','url','title','price','bhk','size']
 	list_editable=['approved']
 
@@ -15,7 +15,6 @@ class LLAdmin(admin.ModelAdmin):
 
 
 admin.site.register(City)
-admin.site.register(BHK)
 admin.site.register(Company)
 admin.site.register(Flat,FlatAdmin)
 admin.site.register(Location)

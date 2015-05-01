@@ -78,7 +78,7 @@ def api3(request,company,city,area):
 			flat_dict["location"]=flat.location.name
 			flat_dict["price"]=flat.price
 			flat_dict["size"]=flat.size
-			flat_dict["bhk"]=flat.bhk.bhk
+			flat_dict["bhk"]=flat.bhk
 			flat_dict["furnished"]=flat.furnished
 			flat_dict["address"]=flat.address
 			flat_dict["source_url"]=flat.url

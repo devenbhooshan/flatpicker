@@ -22,8 +22,6 @@
 		console.log("Fiddling");
 		
 		this.submitReq=function(){
-				ngProgress.start();
-				ngProgress.color("#1f8dd6");
 			var flag = false;
 			if(this.citySelected=="City")
 			{
@@ -37,6 +35,8 @@
 			}
 			if(true)
 			{
+				ngProgress.color("#1f8dd6");
+				ngProgress.start();
 				this.cityError=false;
 				this.areaError=false;
 				this.visibilityToggle=false;

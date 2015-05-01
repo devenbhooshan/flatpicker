@@ -24,7 +24,7 @@ DEBUG = False
 
 TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['flatpicker.in']
+ALLOWED_HOSTS = ['flatpicker.in','127.0.0.1']
 
 
 # Application definition

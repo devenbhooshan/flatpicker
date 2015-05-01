@@ -4,166 +4,180 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="A layout example that shows off a responsive product landing page.">
+    <meta name="viewport" content="width=520px, initial-scale=1.0">
+    <meta name="description" content="Search flats nearest to your office. 
+    Our minions do all the heavy lifting to find which flats suits your vicinity and lifestyle preference near your working place.">
     
     {% block title %}
     <title>Find flats nearest to your office | Flatpicker </title>
     {% endblock %}
     
-<link href="/static/css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-<link rel="stylesheet" href="/static/css/style.css">
-<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-<link href="/static/css/marketing.css" rel="stylesheet">
-g" style="z-index:4">
+    <link rel="icon" type="image/png" href="/static/images/favicon.png">
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link href="/static/css/marketing.css" rel="stylesheet">
 </head>
+
 <body ng-app="lp" ng-controller="LandingpageController as lpcntrl">
-<div class="splash-container" align="center">
-{% block content %}   
+    <div class="splash-container" align="center">
+        {% block content %}
         <div align="center" class="main" ng-show="lpcntrl.visibilityToggle">
-        <h1 class="splash-text">
-            <span class="glyphicon glyphicon-map-marker"></span> Flatpicker </h1>
-        <p class="text">
-            Find flats nearest to your company/office.
-        </p>
-        <form method="post" ng-submit="lpcntrl.submitReq()">
-          {% csrf_token %} 
-			{% verbatim %}
-                    <select  name="company" ng-model="lpcntrl.companySelected" ng-change="lpcntrl.getCity()">
-                      <option ng-repeat="company in lpcntrl.company" >{{company}}</option>
-                    </select>
-                    
-                    <select  name="city" ng-model="lpcntrl.citySelected" ng-change="lpcntrl.getArea()" ng-class="{error:lpcntrl.cityError}">
-                      <option ng-repeat="city in lpcntrl.city" >{{city}}</option>
-                    </select>
-                    <select name="area" ng-model="lpcntrl.areaSelected" ng-class="{error:lpcntrl.areaError}">
-                      <option ng-repeat="area in lpcntrl.area" >{{area}}</option>
-                    </select>
+            <h1 class="splash-text">
+                <span class="glyphicon glyphicon-map-marker"></span> Flatpicker 
+            </h1>
+            <p class="text">
+                Find flats nearest to your company/office.
+            </p>
+            <form method="post" ng-submit="lpcntrl.submitReq()">
+                {% csrf_token %}
+                {% verbatim %}
+                <select  name="company" ng-model="lpcntrl.companySelected" ng-change="lpcntrl.getCity()">
+                    <option ng-repeat="company in lpcntrl.company" >{{company}}</option>
+                </select>
+
+                <select  name="city" ng-model="lpcntrl.citySelected" ng-change="lpcntrl.getArea()" ng-class="{error:lpcntrl.cityError}">
+                    <option ng-repeat="city in lpcntrl.city" >{{city}}</option>
+                </select>
+
+                <select name="area" ng-model="lpcntrl.areaSelected" ng-class="{error:lpcntrl.areaError}">
+                    <option ng-repeat="area in lpcntrl.area" >{{area}}</option>
+                </select>
+
                 <input type="submit" value="Submit"  style="text-align:center"/>
 			{% endverbatim %}
           </form>
        </div>
-			{% verbatim %}
-       
-        <div align="center" class="flat-information" ng-show="!lpcntrl.visibilityToggle" ng-class="{visibility:lpcntrl.visibility}">
-        <div class="flat-information-top-bar"><span class="glyphicon glyphicon-map-marker"></span>Flatpicker
-        </div>
-        <div align="center" class="flat-information-top-bar-picker">
-        <form method="post" ng-submit="lpcntrl.submitReq()">
+
+        {% verbatim %}
+        <div align="center" class="flat-information" ng-show="!lpcntrl.visibilityToggle" ng-cloak ng-class="{visibility:lpcntrl.visibility}">
+            <div class="flat-information-top-bar">
+                <span class="glyphicon glyphicon-map-marker"></span>Flatpicker
+            </div>
+            <div align="center" class="flat-information-top-bar-picker">
+                <form method="post" ng-submit="lpcntrl.submitReq()">
                     <select  name="company" ng-model="lpcntrl.companySelected" ng-change="lpcntrl.getCity()">
-                      <option ng-repeat="company in lpcntrl.company" >{{company}}</option>
+                        <option ng-repeat="company in lpcntrl.company" >{{company}}</option>
                     </select>
-                    
+
                     <select  name="city" ng-model="lpcntrl.citySelected" ng-change="lpcntrl.getArea()" ng-class="{error:lpcntrl.cityError}">
-                      <option ng-repeat="city in lpcntrl.city" >{{city}}</option>
+                        <option ng-repeat="city in lpcntrl.city" >{{city}}</option>
                     </select>
+
                     <select name="area" ng-model="lpcntrl.areaSelected" ng-class="{error:lpcntrl.areaError}">
-                      <option ng-repeat="area in lpcntrl.area" >{{area}}</option>
+                        <option ng-repeat="area in lpcntrl.area" >{{area}}</option>
                     </select>
-                <input type="submit" value="Submit"  style="text-align:center"/>
-          </form>
-        </div>
-        
-        <div class="flat-information-flat-details" align="center">
 
-<span class="flat-information-flat-details-left">
-        <span class="flat-information-flat-details-card" ng-repeat="f in lpcntrl.flatDetailsLeft">
-        	<div class="flat-information-flat-details-card-top-card">{{f.title}}</div>
-        	<div class="flat-information-flat-details-card-location">{{f.location}}
+                    <input type="submit" value="Submit"  style="text-align:center"/>
+                </form>
             </div>
-        <div class="flat-information-flat-details-card-information">
-        	<span class="flat-information-flat-details-card-information-image"><img ng-src="{{f.pic_url}}" width="130" align="absmiddle"></span>
-            <span class="flat-information-flat-details-card-information-information">
-            <table>
-            <tr>
-            <td>Price :</td>
-            <td>{{f.price}}</td>
-            </tr>
-            <tr>
-            <td>Size :</td>
-            <td>{{f.size}} Sq. Ft.</td>
-            </tr>
-            <tr>
-            <td>BHK :</td>
-            <td>{{f.bhk}}</td>
-            </tr>
-            <tr>
-            <td>Furnished :</td>
-            <td>{{f.furnished}}</td>
-            </tr>
-            </table>
-            </span>
-        <span class="flat-information-flat-details-card-bottom-address">
-		{{f.address}}
-        </span>
-        <span class="flat-information-flat-details-card-bottom">
-         <img width="20%" height="20%" src="/static/images/commonfloor.jpg"></span>
-        </div>
-        </span>
-</span>
 
+            <div class="flat-information-flat-details" align="center">
+                <span class="flat-information-flat-details-left">
+                    <span class="flat-information-flat-details-card" ng-repeat="f in lpcntrl.flatDetailsLeft">
+                        <a ng-href="{{f.source_url}}" target="_blank">
+                            <div class="flat-information-flat-details-card-top-card">{{f.title}}</div>
+                            <div class="flat-information-flat-details-card-location">{{f.location}}</div>
+                            <div class="flat-information-flat-details-card-information">
+                                <span class="flat-information-flat-details-card-information-image">
+                                    <img ng-src="{{f.pic_url}}" width="130" align="absmiddle">
+                                </span>
+                                <span class="flat-information-flat-details-card-information-information">
+                                    <table>
+                                        <tr>
+                                            <td>Price :</td>
+                                            <td>{{f.price}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Size :</td>
+                                            <td>{{f.size}} Sq. Ft.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>BHK :</td>
+                                            <td>{{f.bhk}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Furnished :</td>
+                                            <td>{{f.furnished}}</td>
+                                        </tr>
+                                    </table>
+                                </span>
+                                <span class="flat-information-flat-details-card-bottom-address">
+                                    {{f.address}}
+                                </span>
+                                <span class="flat-information-flat-details-card-bottom">
+                                    <img width="20%" height="20%" src="/static/images/commonfloor.jpg">
+                                </span>
+                            </div>
+                        </a>
+                    </span>
+                </span>
 
+                <span class="flat-information-flat-details-right">
+                    <span class="flat-information-flat-details-card" ng-repeat="f in lpcntrl.flatDetailsRight">
+                        <a ng-href="{{f.source_url}}" target="_blank">
+                            <div class="flat-information-flat-details-card-top-card">{{f.title}}</div>
+                            <div class="flat-information-flat-details-card-location">{{f.location}}</div>
+                            <div class="flat-information-flat-details-card-information">
+                                <span class="flat-information-flat-details-card-information-image">
+                                    <img ng-src="{{f.pic_url}}" width="130" align="absmiddle">
+                                </span>
 
-
-<span class="flat-information-flat-details-right">
-
-
-        <span class="flat-information-flat-details-card" ng-repeat="f in lpcntrl.flatDetailsRight">
-        	<div class="flat-information-flat-details-card-top-card">{{f.title}}</div>
-        	<div class="flat-information-flat-details-card-location">{{f.location}}
+                                <span class="flat-information-flat-details-card-information-information">
+                                    <table>
+                                        <tr>
+                                            <td>Price :</td>
+                                            <td>{{f.price}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Size :</td>
+                                            <td>{{f.size}} Sq. Ft.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>BHK :</td>
+                                            <td>{{f.bhk}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Furnished :</td>
+                                            <td>{{f.furnished}}</td>
+                                        </tr>
+                                    </table>
+                                </span>
+                                <span class="flat-information-flat-details-card-bottom-address">
+                                    {{f.address}}
+                                </span>
+                                <span class="flat-information-flat-details-card-bottom">
+                                    <img width="20%" height="20%" src="/static/images/commonfloor.jpg">
+                                </span>
+                            </div>
+                        </a>
+                    </span>
+                </span>
             </div>
-        <div class="flat-information-flat-details-card-information">
-        	<span class="flat-information-flat-details-card-information-image"><img ng-src="{{f.pic_url}}" width="130" align="absmiddle"></span>
-            <span class="flat-information-flat-details-card-information-information">
-            <table>
-            <tr>
-            <td>Price :</td>
-            <td>{{f.price}}</td>
-            </tr>
-            <tr>
-            <td>Size :</td>
-            <td>{{f.size}} Sq. Ft.</td>
-            </tr>
-            <tr>
-            <td>BHK :</td>
-            <td>{{f.bhk}}</td>
-            </tr>
-            <tr>
-            <td>Furnished :</td>
-            <td>{{f.furnished}}</td>
-            </tr>
-            </table>
-            </span>
-        <span class="flat-information-flat-details-card-bottom-address">
-		{{f.address}}
-        </span>
-        <span class="flat-information-flat-details-card-bottom">
-         <img width="20%" height="20%" src="/static/images/commonfloor.jpg"></span>
         </div>
-        </span>
-		</span>
+        {% endverbatim %}
+        {% endblock %}
+    </div>
 
-        </div>
-        
-        
-       </div>
-			{% endverbatim %}
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    {% endblock %}
-</div>
+      ga('create', 'UA-62494868-1', 'auto');
+      ga('send', 'pageview');
 
+    </script>
 <script src="/static/js/jquery-1.11.2.min.js"></script>
 <script src="/static/js/angular.min.js"></script>
 <script src="/static/js/bootstrap.js"></script>
 <script src="/static/js/lp/lp.js"></script>
 <script src="/static/js/common/ngProgress.js"></script>
 <script src="/static/js/common/ngProgress.min.js"></script>
-
-
-
-
 
 </body>
 </html>

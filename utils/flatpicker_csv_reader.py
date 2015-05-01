@@ -1,7 +1,11 @@
 import glob, os, csv
 from utils.constants import *
+import os,sys
+PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_PATH2=os.path.abspath(os.path.join(PROJECT_PATH, os.pardir))
+sys.path.append(PROJECT_PATH)
 
-FOLDER_PATH ='/home/jolo/docs/' 
+FOLDER_PATH =PROJECT_PATH2 + '/docs/' 
 
 
 def get_company_details():

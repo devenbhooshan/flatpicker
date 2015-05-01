@@ -34,7 +34,7 @@
 			if(!flag)
 			{
 				ngProgress.start();
-				ngProgress.color("#FFFFFF");
+				ngProgress.color("#1f8dd6");
 				this.cityError=false;
 				this.areaError=false;
 				this.visibilityToggle=false;

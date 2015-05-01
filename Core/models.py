@@ -1,10 +1,5 @@
 from django.db import models
 
-class BHK(models.Model):
-	bhk=models.FloatField(unique=True)
-	def __str__(self):
-		return str(self.bhk)
-
 class Company(models.Model):
 	name=models.CharField(unique=True,null=False,max_length=50)
 	img = models.CharField(max_length=200)
@@ -20,6 +15,7 @@ class City(models.Model):
 
 class Location(models.Model):
 	name=models.CharField(unique=True,null=False,max_length=50)
+	crawled=models.BooleanField(default=False)
 	def __str__(self):
 		return self.name
 
@@ -32,13 +28,14 @@ class Flat(models.Model):
 	url=models.URLField(unique=True,null=False)
 	title=models.CharField(max_length=100)
 	price=models.CharField(max_length=20)
-	bhk=models.ForeignKey(BHK)
-	address=models.CharField(max_length=300)
+	bhk=bhk=models.FloatField(max_length=10)
+	address=models.TextField()
 	location=models.ForeignKey(Location)
 	size=models.CharField(max_length=20)
 	pic_url=models.URLField()
 	furnished=models.CharField(max_length=50)
 	approved=models.BooleanField(default=False)
+	crawled=models.BooleanField(default=False)
 	def __str__(self):
 		return str(self.url)
 
@@ -53,7 +50,7 @@ class LocationCompanyCity(models.Model):
 	def __str__(self):
 		return str(self.location) + ' : ' + str(self.company) 
 	class Meta:
-		unique_together=['location','company','city']
+		unique_together=['location','company','city','area']
 
 class LatLong(models.Model):
 	lat=models.CharField(max_length=20)

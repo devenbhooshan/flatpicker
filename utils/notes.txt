@@ -1,0 +1,4 @@
+http://stackoverflow.com/questions/25459386/mac-os-x-environmenterror-mysql-config-not-found
+
+http://stackoverflow.com/questions/26573984/django-how-to-install-mysql-connector-python-with-pip3
+https://github.com/clelland/MySQL-for-Python-3

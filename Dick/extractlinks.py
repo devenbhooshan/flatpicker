@@ -47,10 +47,16 @@ def searchOnCommonFloor(inputText, city = "Bangalore"):
 		response.locations = eval(getLocalitiesResponse.text)
 
 		getFlatsUrl = "http://www.commonfloor.com/transformers/search-response/index"
-		getFlatsResponse = requests.get(getFlatsUrl, data=searchPayload)
+		getFlatsResponse = requests.post(getFlatsUrl, data=searchPayload)
 		response.flatsHTML = getFlatsResponse.json()["searchResults"]["html"].encode("ascii", "ignore")
 
 	return response
 
+from bs4 import BeautifulSoup
+
 if __name__ == "__main__":
-	print searchOnCommonFloor("Bellandur")
+	result=searchOnCommonFloor("Bennigana Halli")
+	html_doc=result.flatsHTML
+	soup = BeautifulSoup(html_doc)
+	links=soup.find_all('a')
+	# import pdb;pdb.set_trace()

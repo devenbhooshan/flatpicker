@@ -20,8 +20,6 @@
 		this.visibility=false;
 		
 		this.submitReq=function(){
-				ngProgress.start();
-				ngProgress.color("#1f8dd6");
 			var flag = false;
 			if(this.citySelected=="City")
 			{

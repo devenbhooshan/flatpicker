@@ -1,5 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
+@import url("/static/css/ngProgress.css");
 
 input[type="submit"] {
   height:50px;
@@ -202,4 +203,8 @@ select
 	{
 		width:550px;
 	}
+}
+.visibility
+{
+	visibility:hidden;
 }

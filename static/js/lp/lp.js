@@ -19,6 +19,8 @@
 		this.areaError=false;
 		this.visibility=false;
 		
+		console.log("Fiddling");
+		
 		this.submitReq=function(){
 				ngProgress.start();
 				ngProgress.color("#1f8dd6");

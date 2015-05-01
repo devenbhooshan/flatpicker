@@ -50,7 +50,7 @@ class LocationCompanyCity(models.Model):
 	def __str__(self):
 		return str(self.location) + ' : ' + str(self.company) 
 	class Meta:
-		unique_together=['location','company','city']
+		unique_together=['location','company','city','area']
 
 class LatLong(models.Model):
 	lat=models.CharField(max_length=20)

@@ -23,9 +23,9 @@ for al in all_locations:
 	al.crawled=False
 	al.save()
 
-for af in all_flats:
-	af.crawled=False
-	af.save()
+# for af in all_flats:
+# 	af.crawled=False
+# 	af.save()
 
 
 def store_links(html_doc,location):

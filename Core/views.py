@@ -57,7 +57,7 @@ def api3(request,company,city,area):
 		area=Area.objects.get(name=area)
 	
 		if area.name =='all':
-			title=  title_all.formatDomlur(company=company.name, city=city.name)  
+			title=  title_all.format(company=company.name, city=city.name)  
 			h1 = h1_all.format(company="<img src='/static/images/"+ company.img +"'>", city=city.name)  
 		else:
 			title=  title_area.format(company=company.name, city=city.name, area=area.name)  

@@ -126,26 +126,27 @@ select
 
 .flat-information-flat-details-card
 {
-	width:500px;
+	width:100%;
 	position:relative;
 	float:left;
 	background:#FFF;
 	margin-top:10px;
 	margin-bottom:10px;
+	box-shadow: 2px 2px 3px #555;
 }
 .flat-information-flat-details-card-top-card
 {
 	width:100%;
 	color:#000;
-	font: sans-serif;
+	font: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size:24px;
 	padding: 10px 10px 5px 10px;
 }
 .flat-information-flat-details-card-location
 {
-	width:100%px;
+	width:100%;
 	color:#555;
-	font: sans-serif;
+	font: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size:18px;
 	border-bottom:#d7d6d6 thin solid;
 }
@@ -159,7 +160,7 @@ select
 .flat-information-flat-details-card-information-image
 {
 	width:16%;
-	font: sans-serif;
+	font: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	padding-top: 5px;
 	color:#555;
 	float:left;
@@ -169,7 +170,7 @@ select
 .flat-information-flat-details-card-information-information
 {
 	width:80%;
-	font: sans-serif;
+	font: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	padding-top: 5px;
 	font-size:18px;
 	color:#555;
@@ -180,28 +181,51 @@ select
 .flat-information-flat-details-card-bottom-address
 {
 	width:100%;
-	font: sans-serif;
+	font: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	padding-top: 5px;
 	float:left;
 	position:relative;
 	color:#555;
 	font-size:18px;
 	border-bottom:#d7d6d6 thin solid;
+	padding: 0px 10px 0px 10px;
 }
 .flat-information-flat-details-card-bottom
 {
 	width:100%;
-	font: sans-serif;
+	font: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	padding-top: 5px;
 	float:left;
 	position:relative;
 	color:#555;
 }
 
-@media screen and (max-width:1100px){
+@media screen and (max-width:1100px) and (min-width:570px){
 	.flat-information-flat-details
 	{
 		width:550px;
+	}
+}
+@media screen and (max-width:570px){
+	.flat-information-flat-details
+	{
+		width:90%;
+	}
+	.flat-information-flat-details-left, .flat-information-flat-details-right
+	{
+		width:100%;
+		margin: 10px 0px 10px 0px ;
+	}
+	.flat-information-flat-details-card-information-information
+	{
+		width:100%;
+		text-align:left;
+		margin-bottom:10px;
+		padding-bottom:10px;
+	}
+	.flat-information-flat-details-card-information-image
+	{
+		width:100%;
 	}
 }
 .visibility

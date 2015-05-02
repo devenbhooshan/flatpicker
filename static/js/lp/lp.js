@@ -19,8 +19,6 @@
 		this.areaError=false;
 		this.visibility=false;
 		
-		console.log("Fiddling");
-		
 		this.submitReq=function(){
 			var flag = false;
 			if(this.citySelected=="City")

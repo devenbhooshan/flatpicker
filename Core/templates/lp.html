@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <link href="/static/css/marketing.css" rel="stylesheet">
+    <script src="/static/js/angular.min.js"></script>
 </head>
 
 <body ng-app="lp" ng-controller="LandingpageController as lpcntrl">
@@ -38,19 +39,19 @@
             <form method="post" ng-submit="lpcntrl.submitReq()">
                 {% csrf_token %}
                 {% verbatim %}
-                <select  name="company" ng-model="lpcntrl.companySelected" ng-change="lpcntrl.getCity()">
+                <select  name="company" ng-model="lpcntrl.companySelected" ng-change="lpcntrl.getCity()" ng-cloak>
                     <option ng-repeat="company in lpcntrl.company" >{{company}}</option>
                 </select>
 
-                <select  name="city" ng-model="lpcntrl.citySelected" ng-change="lpcntrl.getArea()" ng-class="{error:lpcntrl.cityError}">
+                <select  name="city" ng-model="lpcntrl.citySelected" ng-change="lpcntrl.getArea()" ng-class="{error:lpcntrl.cityError}" ng-cloak>
                     <option ng-repeat="city in lpcntrl.city" >{{city}}</option>
                 </select>
 
-                <select name="area" ng-model="lpcntrl.areaSelected" ng-class="{error:lpcntrl.areaError}">
+                <select name="area" ng-model="lpcntrl.areaSelected" ng-class="{error:lpcntrl.areaError}" ng-cloak>
                     <option ng-repeat="area in lpcntrl.area" >{{area}}</option>
                 </select>
 
-                <input type="submit" value="Submit"  style="text-align:center"/>
+                <input type="submit" value="Submit"  style="text-align:center" ng-cloak/>
 			{% endverbatim %}
           </form>
        </div>
@@ -165,11 +166,6 @@
         {% endblock %}
     </div>
 
-    <script src="/static/js/jquery-1.11.2.min.js"></script>
-    <script src="/static/js/angular.min.js"></script>
-    <script src="/static/js/bootstrap.js"></script>
-    <script src="/static/js/common/ngProgress.js"></script>
-    <script src="/static/js/lp/lp.js"></script>
     <!-- Google Analytics -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -182,7 +178,6 @@
 
     </script>
    	<script src="/static/js/jquery-1.11.2.min.js"></script>
-    <script src="/static/js/angular.min.js"></script>
     <script src="/static/js/bootstrap.js"></script>
     <script src="/static/js/common/ngProgress.js"></script>
     <script src="/static/js/lp/lp.js"></script>

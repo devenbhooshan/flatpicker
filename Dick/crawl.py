@@ -48,6 +48,8 @@ def get_data(flat):
 	flat.price=price
 	flat.size=size
 	flat.address=address
+	if "furnished" not in furnished.lower():
+		furnished = "Not Specified"
 	flat.furnished=furnished
 	flat.pic_url=pic_url
 	
@@ -55,11 +57,6 @@ def get_data(flat):
 	# print(size)
 	# print(address)
 	# print(furnished)
-
-	if "furnished" in furnished.lower():
-		flat.approved=True
-	else:
-		flat.approved=False
 
 	flat.crawled=True
 	flat.save()

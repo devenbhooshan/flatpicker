@@ -1,8 +1,8 @@
 // JavaScript Document
 (function()
 {
-	var app = angular.module("lp", []);
-	app.controller("LandingpageController", ['$scope', '$http', function($scope, $http){
+	var app = angular.module("lp", ['ngProgress']);
+	app.controller("LandingpageController", ['$scope', '$http','$window','ngProgress', function($scope, $http,$window,ngProgress){
 		lp=this;
 		this.company=["IBM","Google","TCS","Accenture","Musigma","Cisco","Infosys","Cognizant","Bosch","Microsoft","Amazon"];
 		this.companySelected=this.company[0];
@@ -17,7 +17,8 @@
 
 		this.cityError=false;
 		this.areaError=false;
-
+		this.visibility=false;
+		
 		this.submitReq=function(){
 			var flag = false;
 			if(this.citySelected=="City")
@@ -30,8 +31,10 @@
 				flag=true;
 				this.areaError=true;
 			}
-			if(!flag)
+			if(true)
 			{
+				ngProgress.color("#1f8dd6");
+				ngProgress.start();
 				this.cityError=false;
 				this.areaError=false;
 				this.visibilityToggle=false;
@@ -49,6 +52,7 @@
 					}
 						lp.flatDetailsLeft=lp.flatDetails.slice(0,length/2);
 						lp.flatDetailsRight=lp.flatDetails.slice(length/2,length);
+					ngProgress.complete();
 				});
 			}
 		};
